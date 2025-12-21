@@ -967,10 +967,10 @@ static void LV_Add(int rowIndex, const Row& r) {
     std::wstring typeBuf;
 
     if (!r.isDir) {
-        if (IsVideoFile(r.full)) {
-            typeText = L"Video";
-        }
-        else {
+//        if (IsVideoFile(r.full)) {
+//            typeText = L"Video";
+//        }
+//        else {
             const wchar_t* ext = PathFindExtensionW(r.full.c_str());
             if (ext && *ext) {
                 typeBuf = ext;
@@ -979,7 +979,7 @@ static void LV_Add(int rowIndex, const Row& r) {
             else {
                 typeText = L"File";
             }
-        }
+//        }
     }
 
     ListView_SetItemText(g_hwndList, rowIndex, 1, const_cast<wchar_t*>(typeText));
@@ -1020,10 +1020,28 @@ static void SortRows(int col, bool asc) {
                 return asc ? (_wcsicmp(A.name.c_str(), B.name.c_str()) < 0)
                     : (_wcsicmp(A.name.c_str(), B.name.c_str()) > 0);
             case 1: {
-                int ta = A.isDir ? 0 : 1, tb = B.isDir ? 0 : 1;
-                if (ta != tb) return ta < tb;
-                return asc ? (_wcsicmp(A.name.c_str(), B.name.c_str()) < 0)
-                    : (_wcsicmp(A.name.c_str(), B.name.c_str()) > 0);
+                auto typeTextForSort = [](const Row& r) -> const wchar_t* {
+                    if (r.isDir) return L"Folder";
+
+                    // Match what you display in LV_Add()
+                    if (IsVideoFile(r.full)) return L"Video";
+
+                    const wchar_t* ext = PathFindExtensionW(r.full.c_str());
+                    if (ext && *ext) {
+                        // Optional: skip the dot for nicer ordering (".txt" -> "txt")
+                        return (ext[0] == L'.' && ext[1]) ? (ext + 1) : ext;
+                    }
+                    return L"File";
+                    };
+
+                const wchar_t* ta = typeTextForSort(A);
+                const wchar_t* tb = typeTextForSort(B);
+
+                int c = _wcsicmp(ta, tb);
+                if (c != 0) return asc ? (c < 0) : (c > 0);
+
+                // Tie-breaker: keep stable ordering by name (like your other columns)
+                return _wcsicmp(A.name.c_str(), B.name.c_str()) < 0;
             }
             case 2:
                 if (A.size != B.size) return asc ? (A.size < B.size) : (A.size > B.size);
