@@ -330,7 +330,7 @@ VLC_USED
 static inline bool stream_HasExtension( stream_t *s, const char *extension )
 {
     const char *name = (s->psz_filepath != NULL) ? s->psz_filepath
-                                                 : s->psz_url;
+                       : s->psz_url;
     const char *ext = strrchr( name, '.' );
     return ext != NULL && !strcasecmp( ext, extension );
 }
@@ -476,7 +476,7 @@ VLC_API stream_t* vlc_stream_FilterNew( stream_t *p_source, const char *psz_stre
  * forward the pf_readdir call to the p_source stream.
  */
 VLC_API int vlc_stream_FilterDefaultReadDir(stream_t *s,
-                                            input_item_node_t *p_node);
+        input_item_node_t *p_node);
 
 /**
  * Sets vlc_stream_FilterDefaultReadDir as the pf_readdir callback for this

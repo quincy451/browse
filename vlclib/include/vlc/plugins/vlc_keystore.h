@@ -47,7 +47,8 @@ libvlc_InternalKeystoreClean(libvlc_int_t *p_libvlc);
 /**
  * List of keys that can be stored via the keystore API
  */
-enum vlc_keystore_key {
+enum vlc_keystore_key
+{
     KEY_PROTOCOL,
     KEY_USER,
     KEY_SERVER,
@@ -175,7 +176,8 @@ struct vlc_credential
     const char *psz_password;
 
     /* internal */
-    enum {
+    enum
+    {
         GET_FROM_URL,
         GET_FROM_OPTION,
         GET_FROM_MEMORY_KEYSTORE,

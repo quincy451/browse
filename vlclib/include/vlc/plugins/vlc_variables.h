@@ -107,7 +107,8 @@
  * These are the different actions that can be used with var_GetAndSet()
  * @{
  */
-enum {
+enum
+{
     VLC_VAR_BOOL_TOGGLE, /**< Invert a boolean value (param ignored) */
     VLC_VAR_INTEGER_ADD, /**< Add parameter to an integer value */
     VLC_VAR_INTEGER_OR,  /**< Binary OR over an integer bits field */
@@ -288,7 +289,8 @@ static inline int64_t var_GetInteger( vlc_object_t *p_obj, const char *psz_name 
 VLC_USED
 static inline bool var_GetBool( vlc_object_t *p_obj, const char *psz_name )
 {
-    vlc_value_t val; val.b_bool = false;
+    vlc_value_t val;
+    val.b_bool = false;
 
     if( !var_GetChecked( p_obj, psz_name, VLC_VAR_BOOL, &val ) )
         return val.b_bool;
@@ -320,7 +322,8 @@ static inline void var_GetCoords( vlc_object_t *obj, const char *name,
 VLC_USED
 static inline float var_GetFloat( vlc_object_t *p_obj, const char *psz_name )
 {
-    vlc_value_t val; val.f_float = 0.0;
+    vlc_value_t val;
+    val.f_float = 0.0;
     if( !var_GetChecked( p_obj, psz_name, VLC_VAR_FLOAT, &val ) )
         return val.f_float;
     else
@@ -336,7 +339,8 @@ static inline float var_GetFloat( vlc_object_t *p_obj, const char *psz_name )
 VLC_USED VLC_MALLOC
 static inline char *var_GetString( vlc_object_t *p_obj, const char *psz_name )
 {
-    vlc_value_t val; val.psz_string = NULL;
+    vlc_value_t val;
+    val.psz_string = NULL;
     if( var_GetChecked( p_obj, psz_name, VLC_VAR_STRING, &val ) )
         return NULL;
     else
@@ -464,7 +468,7 @@ static inline float var_CreateGetFloat( vlc_object_t *p_obj, const char *psz_nam
  */
 VLC_USED VLC_MALLOC
 static inline char *var_CreateGetString( vlc_object_t *p_obj,
-                                           const char *psz_name )
+        const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_STRING | VLC_VAR_DOINHERIT );
     return var_GetString( p_obj, psz_name );
@@ -472,7 +476,7 @@ static inline char *var_CreateGetString( vlc_object_t *p_obj,
 
 VLC_USED VLC_MALLOC
 static inline char *var_CreateGetNonEmptyString( vlc_object_t *p_obj,
-                                                   const char *psz_name )
+        const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_STRING | VLC_VAR_DOINHERIT );
     return var_GetNonEmptyString( p_obj, psz_name );
@@ -486,7 +490,7 @@ static inline char *var_CreateGetNonEmptyString( vlc_object_t *p_obj,
  */
 VLC_USED
 static inline void *var_CreateGetAddress( vlc_object_t *p_obj,
-                                           const char *psz_name )
+        const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_ADDRESS | VLC_VAR_DOINHERIT );
     return var_GetAddress( p_obj, psz_name );
@@ -509,7 +513,7 @@ VLC_USED
 static inline int64_t var_CreateGetIntegerCommand( vlc_object_t *p_obj, const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_INTEGER | VLC_VAR_DOINHERIT
-                                   | VLC_VAR_ISCOMMAND );
+                | VLC_VAR_ISCOMMAND );
     return var_GetInteger( p_obj, psz_name );
 }
 
@@ -523,7 +527,7 @@ VLC_USED
 static inline bool var_CreateGetBoolCommand( vlc_object_t *p_obj, const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_BOOL | VLC_VAR_DOINHERIT
-                                   | VLC_VAR_ISCOMMAND );
+                | VLC_VAR_ISCOMMAND );
     return var_GetBool( p_obj, psz_name );
 }
 
@@ -537,7 +541,7 @@ VLC_USED
 static inline float var_CreateGetFloatCommand( vlc_object_t *p_obj, const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_FLOAT | VLC_VAR_DOINHERIT
-                                   | VLC_VAR_ISCOMMAND );
+                | VLC_VAR_ISCOMMAND );
     return var_GetFloat( p_obj, psz_name );
 }
 
@@ -549,19 +553,19 @@ static inline float var_CreateGetFloatCommand( vlc_object_t *p_obj, const char *
  */
 VLC_USED VLC_MALLOC
 static inline char *var_CreateGetStringCommand( vlc_object_t *p_obj,
-                                           const char *psz_name )
+        const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_STRING | VLC_VAR_DOINHERIT
-                                   | VLC_VAR_ISCOMMAND );
+                | VLC_VAR_ISCOMMAND );
     return var_GetString( p_obj, psz_name );
 }
 
 VLC_USED VLC_MALLOC
 static inline char *var_CreateGetNonEmptyStringCommand( vlc_object_t *p_obj,
-                                                   const char *psz_name )
+        const char *psz_name )
 {
     var_Create( p_obj, psz_name, VLC_VAR_STRING | VLC_VAR_DOINHERIT
-                                   | VLC_VAR_ISCOMMAND );
+                | VLC_VAR_ISCOMMAND );
     return var_GetNonEmptyString( p_obj, psz_name );
 }
 

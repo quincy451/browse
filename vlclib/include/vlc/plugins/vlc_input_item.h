@@ -246,7 +246,7 @@ void input_item_ApplyOptions(vlc_object_t *, input_item_t *);
 VLC_API bool input_item_slave_GetType(const char *, enum slave_type *);
 
 VLC_API input_item_slave_t *input_item_slave_New(const char *, enum slave_type,
-                                               enum slave_priority);
+        enum slave_priority);
 #define input_item_slave_Delete(p_slave) free(p_slave)
 
 /**
@@ -326,9 +326,9 @@ VLC_API void input_item_MergeInfos( input_item_t *, info_category_t * );
  * XXX You may also use input_item_New, as they need less arguments.
  */
 VLC_API input_item_t * input_item_NewExt( const char *psz_uri,
-                                          const char *psz_name,
-                                          vlc_tick_t i_duration, int i_type,
-                                          enum input_item_net_type i_net ) VLC_USED;
+        const char *psz_name,
+        vlc_tick_t i_duration, int i_type,
+        enum input_item_net_type i_net ) VLC_USED;
 
 #define input_item_New( psz_uri, psz_name ) \
     input_item_NewExt( psz_uri, psz_name, -1, ITEM_TYPE_UNKNOWN, ITEM_NET_UNKNOWN )

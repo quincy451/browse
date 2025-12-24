@@ -46,7 +46,7 @@ typedef struct libvlc_media_library_t libvlc_media_library_t;
  * \return a new object or NULL on error
  */
 LIBVLC_API libvlc_media_library_t *
-    libvlc_media_library_new( libvlc_instance_t * p_instance );
+libvlc_media_library_new( libvlc_instance_t * p_instance );
 
 /**
  * Release media library object. This functions decrements the
@@ -56,7 +56,7 @@ LIBVLC_API libvlc_media_library_t *
  * \param p_mlib media library object
  */
 LIBVLC_API void
-    libvlc_media_library_release( libvlc_media_library_t * p_mlib );
+libvlc_media_library_release( libvlc_media_library_t * p_mlib );
 
 /**
  * Retain a reference to a media library object. This function will
@@ -66,7 +66,7 @@ LIBVLC_API void
  * \param p_mlib media library object
  */
 LIBVLC_API void
-    libvlc_media_library_retain( libvlc_media_library_t * p_mlib );
+libvlc_media_library_retain( libvlc_media_library_t * p_mlib );
 
 /**
  * Load media library.
@@ -75,7 +75,7 @@ LIBVLC_API void
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int
-    libvlc_media_library_load( libvlc_media_library_t * p_mlib );
+libvlc_media_library_load( libvlc_media_library_t * p_mlib );
 
 /**
  * Get media library subitems.
@@ -84,7 +84,7 @@ LIBVLC_API int
  * \return media list subitems
  */
 LIBVLC_API libvlc_media_list_t *
-    libvlc_media_library_media_list( libvlc_media_library_t * p_mlib );
+libvlc_media_library_media_list( libvlc_media_library_t * p_mlib );
 
 
 /** @} */

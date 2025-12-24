@@ -181,7 +181,7 @@ LIBVLC_API const char *libvlc_printerr (const char *fmt, ...);
  * \return the libvlc instance or NULL in case of error
  */
 LIBVLC_API libvlc_instance_t *
-libvlc_new( int argc , const char *const *argv );
+libvlc_new( int argc, const char *const *argv );
 
 /**
  * Decrement the reference count of a libvlc instance, and destroy it
@@ -335,9 +335,9 @@ typedef void ( *libvlc_callback_t )( const struct libvlc_event_t *p_event, void 
  * \return 0 on success, ENOMEM on error
  */
 LIBVLC_API int libvlc_event_attach( libvlc_event_manager_t *p_event_manager,
-                                        libvlc_event_type_t i_event_type,
-                                        libvlc_callback_t f_callback,
-                                        void *user_data );
+                                    libvlc_event_type_t i_event_type,
+                                    libvlc_callback_t f_callback,
+                                    void *user_data );
 
 /**
  * Unregister an event notification.
@@ -348,9 +348,9 @@ LIBVLC_API int libvlc_event_attach( libvlc_event_manager_t *p_event_manager,
  * \param p_user_data user provided data to carry with the event
  */
 LIBVLC_API void libvlc_event_detach( libvlc_event_manager_t *p_event_manager,
-                                         libvlc_event_type_t i_event_type,
-                                         libvlc_callback_t f_callback,
-                                         void *p_user_data );
+                                     libvlc_event_type_t i_event_type,
+                                     libvlc_callback_t f_callback,
+                                     void *p_user_data );
 
 /**
  * Get an event's type name.
@@ -402,7 +402,7 @@ typedef struct vlc_log_t libvlc_log_t;
  * \version LibVLC 2.1.0 or later
  */
 LIBVLC_API void libvlc_log_get_context(const libvlc_log_t *ctx,
-                       const char **module, const char **file, unsigned *line);
+                                       const char **module, const char **file, unsigned *line);
 
 /**
  * Gets log message info.
@@ -430,7 +430,7 @@ LIBVLC_API void libvlc_log_get_context(const libvlc_log_t *ctx,
  * \version LibVLC 2.1.0 or later
  */
 LIBVLC_API void libvlc_log_get_object(const libvlc_log_t *ctx,
-                        const char **name, const char **header, uintptr_t *id);
+                                      const char **name, const char **header, uintptr_t *id);
 
 /**
  * Callback prototype for LibVLC log message handler.

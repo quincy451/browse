@@ -65,19 +65,19 @@
 
 /* Try to fix format strings for all versions of mingw and mingw64 */
 #if defined( _WIN32 ) && defined( __USE_MINGW_ANSI_STDIO )
- #undef PRId64
- #define PRId64 "lld"
- #undef PRIi64
- #define PRIi64 "lli"
- #undef PRIu64
- #define PRIu64 "llu"
- #undef PRIo64
- #define PRIo64 "llo"
- #undef PRIx64
- #define PRIx64 "llx"
- #define snprintf __mingw_snprintf
- #define vsnprintf __mingw_vsnprintf
- #define swprintf _snwprintf
+#undef PRId64
+#define PRId64 "lld"
+#undef PRIi64
+#define PRIi64 "lli"
+#undef PRIu64
+#define PRIu64 "llu"
+#undef PRIo64
+#define PRIo64 "llo"
+#undef PRIx64
+#define PRIx64 "llx"
+#define snprintf __mingw_snprintf
+#define vsnprintf __mingw_vsnprintf
+#define swprintf _snwprintf
 #endif
 
 /* Function attributes for compiler warnings */
@@ -340,7 +340,11 @@ typedef union
     char *          psz_string;
     void *          p_address;
     vlc_list_t *    p_list;
-    struct { int32_t x; int32_t y; } coords;
+    struct
+    {
+        int32_t x;
+        int32_t y;
+    } coords;
 
 } vlc_value_t;
 
@@ -624,9 +628,9 @@ static inline uint32_t (bswap32)(uint32_t x)
     return __builtin_bswap32 (x);
 #else
     return ((x & 0x000000FF) << 24)
-         | ((x & 0x0000FF00) <<  8)
-         | ((x & 0x00FF0000) >>  8)
-         | ((x & 0xFF000000) >> 24);
+           | ((x & 0x0000FF00) <<  8)
+           | ((x & 0x00FF0000) >>  8)
+           | ((x & 0xFF000000) >> 24);
 #endif
 }
 
@@ -638,22 +642,22 @@ static inline uint64_t (bswap64)(uint64_t x)
     return __builtin_bswap64 (x);
 #elif !defined (__cplusplus)
     return ((x & 0x00000000000000FF) << 56)
-         | ((x & 0x000000000000FF00) << 40)
-         | ((x & 0x0000000000FF0000) << 24)
-         | ((x & 0x00000000FF000000) <<  8)
-         | ((x & 0x000000FF00000000) >>  8)
-         | ((x & 0x0000FF0000000000) >> 24)
-         | ((x & 0x00FF000000000000) >> 40)
-         | ((x & 0xFF00000000000000) >> 56);
+           | ((x & 0x000000000000FF00) << 40)
+           | ((x & 0x0000000000FF0000) << 24)
+           | ((x & 0x00000000FF000000) <<  8)
+           | ((x & 0x000000FF00000000) >>  8)
+           | ((x & 0x0000FF0000000000) >> 24)
+           | ((x & 0x00FF000000000000) >> 40)
+           | ((x & 0xFF00000000000000) >> 56);
 #else
     return ((x & 0x00000000000000FFULL) << 56)
-         | ((x & 0x000000000000FF00ULL) << 40)
-         | ((x & 0x0000000000FF0000ULL) << 24)
-         | ((x & 0x00000000FF000000ULL) <<  8)
-         | ((x & 0x000000FF00000000ULL) >>  8)
-         | ((x & 0x0000FF0000000000ULL) >> 24)
-         | ((x & 0x00FF000000000000ULL) >> 40)
-         | ((x & 0xFF00000000000000ULL) >> 56);
+           | ((x & 0x000000000000FF00ULL) << 40)
+           | ((x & 0x0000000000FF0000ULL) << 24)
+           | ((x & 0x00000000FF000000ULL) <<  8)
+           | ((x & 0x000000FF00000000ULL) >>  8)
+           | ((x & 0x0000FF0000000000ULL) >> 24)
+           | ((x & 0x00FF000000000000ULL) >> 40)
+           | ((x & 0xFF00000000000000ULL) >> 56);
 #endif
 }
 #endif
@@ -662,10 +666,10 @@ static inline uint64_t (bswap64)(uint64_t x)
 static inline bool uadd_overflow(unsigned a, unsigned b, unsigned *res)
 {
 #if VLC_GCC_VERSION(5,0) || defined(__clang__)
-     return __builtin_uadd_overflow(a, b, res);
+    return __builtin_uadd_overflow(a, b, res);
 #else
-     *res = a + b;
-     return (a + b) < a;
+    *res = a + b;
+    return (a + b) < a;
 #endif
 }
 
@@ -673,10 +677,10 @@ static inline bool uaddl_overflow(unsigned long a, unsigned long b,
                                   unsigned long *res)
 {
 #if VLC_GCC_VERSION(5,0) || defined(__clang__)
-     return __builtin_uaddl_overflow(a, b, res);
+    return __builtin_uaddl_overflow(a, b, res);
 #else
-     *res = a + b;
-     return (a + b) < a;
+    *res = a + b;
+    return (a + b) < a;
 #endif
 }
 
@@ -684,10 +688,10 @@ static inline bool uaddll_overflow(unsigned long long a, unsigned long long b,
                                    unsigned long long *res)
 {
 #if VLC_GCC_VERSION(5,0) || defined(__clang__)
-     return __builtin_uaddll_overflow(a, b, res);
+    return __builtin_uaddll_overflow(a, b, res);
 #else
-     *res = a + b;
-     return (a + b) < a;
+    *res = a + b;
+    return (a + b) < a;
 #endif
 }
 
@@ -723,10 +727,10 @@ static inline bool add_overflow(unsigned long long a, unsigned long long b,
 static inline bool umul_overflow(unsigned a, unsigned b, unsigned *res)
 {
 #if VLC_GCC_VERSION(5,0) || defined(__clang__)
-     return __builtin_umul_overflow(a, b, res);
+    return __builtin_umul_overflow(a, b, res);
 #else
-     *res = a * b;
-     return b > 0 && a > (UINT_MAX / b);
+    *res = a * b;
+    return b > 0 && a > (UINT_MAX / b);
 #endif
 }
 
@@ -734,10 +738,10 @@ static inline bool umull_overflow(unsigned long a, unsigned long b,
                                   unsigned long *res)
 {
 #if VLC_GCC_VERSION(5,0) || defined(__clang__)
-     return __builtin_umull_overflow(a, b, res);
+    return __builtin_umull_overflow(a, b, res);
 #else
-     *res = a * b;
-     return b > 0 && a > (ULONG_MAX / b);
+    *res = a * b;
+    return b > 0 && a > (ULONG_MAX / b);
 #endif
 }
 
@@ -745,10 +749,10 @@ static inline bool umulll_overflow(unsigned long long a, unsigned long long b,
                                    unsigned long long *res)
 {
 #if VLC_GCC_VERSION(5,0) || defined(__clang__)
-     return __builtin_umulll_overflow(a, b, res);
+    return __builtin_umulll_overflow(a, b, res);
 #else
-     *res = a * b;
-     return b > 0 && a > (ULLONG_MAX / b);
+    *res = a * b;
+    return b > 0 && a > (ULLONG_MAX / b);
 #endif
 }
 
@@ -932,8 +936,8 @@ static inline void SetQWLE (void *p, uint64_t qw)
 /* several type definitions */
 #   if defined( __MINGW32__ )
 #       if !defined( _OFF_T_ )
-            typedef long long _off_t;
-            typedef _off_t off_t;
+typedef long long _off_t;
+typedef _off_t off_t;
 #           define _OFF_T_
 #       else
 #           ifdef off_t
@@ -955,7 +959,8 @@ static inline void SetQWLE (void *p, uint64_t qw)
 #   include <tchar.h>
 #endif /* _WIN32 */
 
-typedef struct {
+typedef struct
+{
     unsigned num, den;
 } vlc_rational_t;
 

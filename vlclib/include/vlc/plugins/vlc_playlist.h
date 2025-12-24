@@ -136,7 +136,8 @@ struct playlist_item_t
     uint8_t                i_flags;     /**< Flags \see playlist_item_flags_e */
 };
 
-typedef enum {
+typedef enum
+{
     PLAYLIST_DBL_FLAG          = 0x04,  /**< Is it disabled ? */
     PLAYLIST_RO_FLAG           = 0x08,  /**< Write-enabled ? */
     PLAYLIST_SUBITEM_STOP_FLAG = 0x40,  /**< Must playlist stop if the item gets subitems ?*/
@@ -219,10 +220,11 @@ enum pl_locked_state
 #define PL_ASSERT_LOCKED playlist_AssertLocked( p_playlist )
 
 /** Playlist commands */
-enum {
+enum
+{
     PLAYLIST_PLAY,      /**< No arg.                            res=can fail*/
     PLAYLIST_VIEWPLAY,  /**< arg1= playlist_item_t*,*/
-                        /**  arg2 = playlist_item_t*          , res=can fail */
+    /**  arg2 = playlist_item_t*          , res=can fail */
     PLAYLIST_TOGGLE_PAUSE, /**< No arg                          res=can fail */
     PLAYLIST_STOP,      /**< No arg                             res=can fail*/
     PLAYLIST_SKIP,      /**< arg1=int,                          res=can fail*/
@@ -382,7 +384,7 @@ VLC_API int playlist_NodeAddCopy( playlist_t *, playlist_item_t *, playlist_item
 /********************************** Item search *************************/
 VLC_API playlist_item_t * playlist_ItemGetById(playlist_t *, int ) VLC_USED;
 VLC_API playlist_item_t *playlist_ItemGetByInput(playlist_t *,
-                                                 const input_item_t * )
+        const input_item_t * )
 VLC_USED;
 
 VLC_API int playlist_LiveSearchUpdate(playlist_t *, playlist_item_t *, const char *, bool );

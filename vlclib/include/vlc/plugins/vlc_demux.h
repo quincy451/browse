@@ -53,7 +53,8 @@ struct demux_t
     char        *psz_location;
     char        *psz_file;
 
-    union {
+    union
+    {
         /**
          * Input stream
          *
@@ -377,7 +378,7 @@ static inline void demux_UpdateTitleFromStream( demux_t *demux )
     unsigned title, seekpoint;
 
     if( vlc_stream_Control( s, STREAM_GET_TITLE, &title ) == VLC_SUCCESS
-     && title != (unsigned)demux->info.i_title )
+            && title != (unsigned)demux->info.i_title )
     {
         demux->info.i_title = title;
         demux->info.i_update |= INPUT_UPDATE_TITLE;
@@ -385,7 +386,7 @@ static inline void demux_UpdateTitleFromStream( demux_t *demux )
 
     if( vlc_stream_Control( s, STREAM_GET_SEEKPOINT,
                             &seekpoint ) == VLC_SUCCESS
-     && seekpoint != (unsigned)demux->info.i_seekpoint )
+            && seekpoint != (unsigned)demux->info.i_seekpoint )
     {
         demux->info.i_seekpoint = seekpoint;
         demux->info.i_update |= INPUT_UPDATE_SEEKPOINT;
@@ -396,7 +397,7 @@ VLC_USED
 static inline bool demux_IsPathExtension( demux_t *p_demux, const char *psz_extension )
 {
     const char *name = (p_demux->psz_file != NULL) ? p_demux->psz_file
-                                                   : p_demux->psz_location;
+                       : p_demux->psz_location;
     const char *psz_ext = strrchr ( name, '.' );
     if( !psz_ext || strcasecmp( psz_ext, psz_extension ) )
         return false;
@@ -412,7 +413,7 @@ static inline bool demux_IsContentType(demux_t *demux, const char *type)
 VLC_USED
 static inline bool demux_IsForced( demux_t *p_demux, const char *psz_name )
 {
-   if( !p_demux->psz_demux || strcmp( p_demux->psz_demux, psz_name ) )
+    if( !p_demux->psz_demux || strcmp( p_demux->psz_demux, psz_name ) )
         return false;
     return true;
 }
@@ -466,8 +467,8 @@ typedef struct vlc_demux_chained_t vlc_demux_chained_t;
  * \return a non-NULL pointer on success, NULL on failure.
  */
 VLC_API vlc_demux_chained_t *vlc_demux_chained_New(vlc_object_t *parent,
-                                                   const char *name,
-                                                   es_out_t *out);
+        const char *name,
+        es_out_t *out);
 
 /**
  * Destroys a chained demuxer.
@@ -503,7 +504,7 @@ VLC_API int vlc_demux_chained_ControlVa(vlc_demux_chained_t *, int query,
                                         va_list args);
 
 static inline int vlc_demux_chained_Control(vlc_demux_chained_t *dc, int query,
-                                            ...)
+        ...)
 {
     va_list ap;
     int ret;

@@ -34,7 +34,8 @@ extern "C" {
  * Category of a media discoverer
  * \see libvlc_media_discoverer_list_get()
  */
-typedef enum libvlc_media_discoverer_category_t {
+typedef enum libvlc_media_discoverer_category_t
+{
     /** devices, like portable music player */
     libvlc_media_discoverer_devices,
     /** LAN/WAN services, like Upnp, SMB, or SAP */
@@ -49,7 +50,8 @@ typedef enum libvlc_media_discoverer_category_t {
  * Media discoverer description
  * \see libvlc_media_discoverer_list_get()
  */
-typedef struct libvlc_media_discoverer_description_t {
+typedef struct libvlc_media_discoverer_description_t
+{
     char *psz_name;
     char *psz_longname;
     libvlc_media_discoverer_category_t i_cat;

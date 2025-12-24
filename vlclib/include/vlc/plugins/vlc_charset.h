@@ -131,13 +131,14 @@ VLC_API void * ToCharset( const char *charset, const char *in, size_t *outsize )
  * Returns char* (must be freed by caller) or NULL on failure.
  */
 VLC_USED static inline char *FromCFString(const CFStringRef cfString,
-    const CFStringEncoding cfStringEncoding)
+        const CFStringEncoding cfStringEncoding)
 {
     // Try the quick way to obtain the buffer
     const char *tmpBuffer = CFStringGetCStringPtr(cfString, cfStringEncoding);
 
-    if (tmpBuffer != NULL) {
-       return strdup(tmpBuffer);
+    if (tmpBuffer != NULL)
+    {
+        return strdup(tmpBuffer);
     }
 
     // The quick way did not work, try the long way
@@ -146,7 +147,8 @@ VLC_USED static inline char *FromCFString(const CFStringRef cfString,
         CFStringGetMaximumSizeForEncoding(length, cfStringEncoding);
 
     // If result would exceed LONG_MAX, kCFNotFound is returned
-    if (unlikely(maxSize == kCFNotFound)) {
+    if (unlikely(maxSize == kCFNotFound))
+    {
         return NULL;
     }
 
@@ -155,7 +157,8 @@ VLC_USED static inline char *FromCFString(const CFStringRef cfString,
 
     char *buffer = (char *)malloc(maxSize);
 
-    if (unlikely(buffer == NULL)) {
+    if (unlikely(buffer == NULL))
+    {
         return NULL;
     }
 
@@ -205,7 +208,8 @@ static inline char *ToCodePage (unsigned cp, const char *utf8)
         return NULL;
 
     size_t len = WideCharToMultiByte (cp, 0, wide, -1, NULL, 0, NULL, NULL);
-    if (len == 0) {
+    if (len == 0)
+    {
         free(wide);
         return NULL;
     }
@@ -310,13 +314,13 @@ static inline char *FromLatin1 (const char *latin)
 
     while ((c = *(latin++)) != '\0')
     {
-         if (c >= 0x80)
-         {
-             *(utf8++) = 0xC0 | (c >> 6);
-             *(utf8++) = 0x80 | (c & 0x3F);
-         }
-         else
-             *(utf8++) = c;
+        if (c >= 0x80)
+        {
+            *(utf8++) = 0xC0 | (c >> 6);
+            *(utf8++) = 0x80 | (c & 0x3F);
+        }
+        else
+            *(utf8++) = c;
     }
     *(utf8++) = '\0';
 

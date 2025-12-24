@@ -64,7 +64,7 @@ int vlc_memstream_printf(struct vlc_memstream *s, const char *fmt,
 
 # ifdef __GNUC__
 static inline int vlc_memstream_puts_len(struct vlc_memstream *ms,
-                                         const char *str, size_t len)
+        const char *str, size_t len)
 {
     return (vlc_memstream_write(ms, str, len) == len) ? (int)len : EOF;
 }

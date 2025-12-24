@@ -39,7 +39,8 @@ typedef struct picture_pool_t picture_pool_t;
 /**
  * Picture pool configuration
  */
-typedef struct {
+typedef struct
+{
     unsigned  picture_count;
     picture_t *const *picture;
 
@@ -80,7 +81,7 @@ VLC_API picture_pool_t * picture_pool_NewExtended( const picture_pool_configurat
  * (pictures are <b>not</b> released on error)
  */
 VLC_API picture_pool_t * picture_pool_New(unsigned count,
-                                          picture_t *const *tab) VLC_USED;
+        picture_t *const *tab) VLC_USED;
 
 /**
  * Allocates pictures from the heap and creates a picture pool with them.
@@ -93,7 +94,7 @@ VLC_API picture_pool_t * picture_pool_New(unsigned count,
  * @return a pointer to the new pool on success, NULL on error
  */
 VLC_API picture_pool_t * picture_pool_NewFromFormat(const video_format_t *fmt,
-                                                    unsigned count) VLC_USED;
+        unsigned count) VLC_USED;
 
 /**
  * Releases a pool created by picture_pool_NewExtended(), picture_pool_New()

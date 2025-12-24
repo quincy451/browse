@@ -177,10 +177,10 @@ static inline void vlc_input_attachment_Delete( input_attachment_t *a )
 }
 
 static inline input_attachment_t *vlc_input_attachment_New( const char *psz_name,
-                                                            const char *psz_mime,
-                                                            const char *psz_description,
-                                                            const void *p_data,
-                                                            size_t i_data )
+        const char *psz_mime,
+        const char *psz_description,
+        const void *p_data,
+        size_t i_data )
 {
     input_attachment_t *a = (input_attachment_t *)malloc( sizeof (*a) );
     if( unlikely(a == NULL) )
@@ -195,7 +195,7 @@ static inline input_attachment_t *vlc_input_attachment_New( const char *psz_name
         memcpy( a->p_data, p_data, i_data );
 
     if( unlikely(a->psz_name == NULL || a->psz_mime == NULL
-              || a->psz_description == NULL || (i_data > 0 && a->p_data == NULL)) )
+                 || a->psz_description == NULL || (i_data > 0 && a->p_data == NULL)) )
     {
         vlc_input_attachment_Delete( a );
         a = NULL;
@@ -562,18 +562,18 @@ static inline input_state_e input_GetState( input_thread_t * p_input )
  */
 static inline vout_thread_t *input_GetVout( input_thread_t *p_input )
 {
-     vout_thread_t **pp_vout, *p_vout;
-     size_t i_vout;
+    vout_thread_t **pp_vout, *p_vout;
+    size_t i_vout;
 
-     if( input_Control( p_input, INPUT_GET_VOUTS, &pp_vout, &i_vout ) )
-         return NULL;
+    if( input_Control( p_input, INPUT_GET_VOUTS, &pp_vout, &i_vout ) )
+        return NULL;
 
-     for( size_t i = 1; i < i_vout; i++ )
-         vlc_object_release( (vlc_object_t *)(pp_vout[i]) );
+    for( size_t i = 1; i < i_vout; i++ )
+        vlc_object_release( (vlc_object_t *)(pp_vout[i]) );
 
-     p_vout = (i_vout >= 1) ? pp_vout[0] : NULL;
-     free( pp_vout );
-     return p_vout;
+    p_vout = (i_vout >= 1) ? pp_vout[0] : NULL;
+    free( pp_vout );
+    return p_vout;
 }
 
 static inline int input_AddSlave( input_thread_t *p_input, enum slave_type type,
@@ -595,8 +595,8 @@ static inline int input_AddSlave( input_thread_t *p_input, enum slave_type type,
  * @return VLC_SUCCESS or a VLC error code
  */
 static inline int input_UpdateViewpoint( input_thread_t *p_input,
-                                         const vlc_viewpoint_t *p_viewpoint,
-                                         bool b_absolute )
+        const vlc_viewpoint_t *p_viewpoint,
+        bool b_absolute )
 {
     return input_Control( p_input, INPUT_UPDATE_VIEWPOINT, p_viewpoint,
                           b_absolute );
@@ -610,8 +610,8 @@ static inline int input_UpdateViewpoint( input_thread_t *p_input,
  */
 static inline audio_output_t *input_GetAout( input_thread_t *p_input )
 {
-     audio_output_t *p_aout;
-     return input_Control( p_input, INPUT_GET_AOUT, &p_aout ) ? NULL : p_aout;
+    audio_output_t *p_aout;
+    return input_Control( p_input, INPUT_GET_AOUT, &p_aout ) ? NULL : p_aout;
 }
 
 /**

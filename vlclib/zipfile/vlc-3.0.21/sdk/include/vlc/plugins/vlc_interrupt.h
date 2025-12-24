@@ -119,9 +119,9 @@ VLC_API ssize_t vlc_recvmsg_i11e(int fd, struct msghdr *, int flags);
 VLC_API ssize_t vlc_sendmsg_i11e(int fd, const struct msghdr *, int flags);
 
 VLC_API ssize_t vlc_recvfrom_i11e(int fd, void *, size_t, int flags,
-                                struct sockaddr *, socklen_t *);
+                                  struct sockaddr *, socklen_t *);
 VLC_API ssize_t vlc_sendto_i11e(int fd, const void *, size_t, int flags,
-                              const struct sockaddr *, socklen_t);
+                                const struct sockaddr *, socklen_t);
 
 static inline ssize_t vlc_recv_i11e(int fd, void *buf, size_t len, int flags)
 {
@@ -215,7 +215,7 @@ VLC_API bool vlc_killed(void) VLC_USED;
  * @param to context to forward to
  */
 VLC_API void vlc_interrupt_forward_start(vlc_interrupt_t *to,
-                                         void *data[2]);
+        void *data[2]);
 
 /**
  * Undoes vlc_interrupt_forward_start().

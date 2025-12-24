@@ -47,7 +47,8 @@
 /**
  * Vout configuration
  */
-typedef struct {
+typedef struct
+{
     vout_thread_t        *vout;
     vlc_object_t         *input;
     bool                 change_fmt;
@@ -67,7 +68,8 @@ typedef struct vout_thread_sys_t vout_thread_sys_t;
  * is represented by a video output thread, and described using the following
  * structure.
  */
-struct vout_thread_t {
+struct vout_thread_t
+{
     VLC_COMMON_MEMBERS
 
     /* Private vout_thread data */

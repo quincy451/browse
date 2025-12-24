@@ -114,7 +114,7 @@ struct video_splitter_t
  * If VLC_SUCCESS is not returned, pp_picture values are undefined.
  */
 static inline int video_splitter_NewPicture( video_splitter_t *p_splitter,
-                                             picture_t *pp_picture[] )
+        picture_t *pp_picture[] )
 {
     int i_ret = p_splitter->pf_picture_new( p_splitter, pp_picture );
     if( i_ret )
@@ -127,7 +127,7 @@ static inline int video_splitter_NewPicture( video_splitter_t *p_splitter,
  * Provided for convenience.
  */
 static inline void video_splitter_DeletePicture( video_splitter_t *p_splitter,
-                                                 picture_t *pp_picture[] )
+        picture_t *pp_picture[] )
 {
     p_splitter->pf_picture_del( p_splitter, pp_picture );
 }
@@ -137,7 +137,7 @@ video_splitter_t * video_splitter_New( vlc_object_t *, const char *psz_name, con
 void video_splitter_Delete( video_splitter_t * );
 
 static inline int video_splitter_Filter( video_splitter_t *p_splitter,
-                                         picture_t *pp_dst[], picture_t *p_src )
+        picture_t *pp_dst[], picture_t *p_src )
 {
     return p_splitter->pf_filter( p_splitter, pp_dst, p_src );
 }

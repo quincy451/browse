@@ -113,7 +113,8 @@ typedef enum
 } ml_type_e;
 
 /** Query result item/list type: integers, strings, medias, timestamps */
-typedef enum {
+typedef enum
+{
     ML_TYPE_INT,        /**< Object is an int */
     ML_TYPE_PSZ,        /**< A string char* */
     ML_TYPE_TIME,       /**< A timestamp vlc_tick_t */

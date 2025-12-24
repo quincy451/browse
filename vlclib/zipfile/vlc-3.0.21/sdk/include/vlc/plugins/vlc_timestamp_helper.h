@@ -48,7 +48,8 @@ static inline timestamp_fifo_t *timestamp_FifoNew(uint32_t capacity)
     if (!fifo)
         return NULL;
     fifo->buffer = vlc_alloc(capacity, sizeof(*fifo->buffer));
-    if (!fifo->buffer) {
+    if (!fifo->buffer)
+    {
         free(fifo);
         return NULL;
     }

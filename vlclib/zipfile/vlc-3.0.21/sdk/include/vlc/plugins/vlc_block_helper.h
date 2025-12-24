@@ -94,7 +94,7 @@ static inline void block_BytestreamFlush( block_bytestream_t *p_bytestream )
 }
 
 static inline void block_BytestreamPush( block_bytestream_t *p_bytestream,
-                                         block_t *p_block )
+        block_t *p_block )
 {
     block_ChainLastAppend( &p_bytestream->pp_last, p_block );
     if( !p_bytestream->p_block ) p_bytestream->p_block = p_block;
@@ -105,7 +105,7 @@ static inline void block_BytestreamPush( block_bytestream_t *p_bytestream,
 static inline size_t block_BytestreamRemaining( const block_bytestream_t *p_bytestream )
 {
     return ( p_bytestream->i_total > p_bytestream->i_base_offset + p_bytestream->i_block_offset ) ?
-             p_bytestream->i_total - p_bytestream->i_base_offset - p_bytestream->i_block_offset : 0;
+           p_bytestream->i_total - p_bytestream->i_base_offset - p_bytestream->i_block_offset : 0;
 }
 
 VLC_USED
@@ -162,7 +162,7 @@ static inline int block_PeekBytes( block_bytestream_t *p_bytestream,
     size_t i_offset = p_bytestream->i_block_offset;
     size_t i_size = i_data;
     for( block_t *p_block = p_bytestream->p_block;
-         p_block != NULL; p_block = p_block->p_next )
+            p_block != NULL; p_block = p_block->p_next )
     {
         size_t i_copy = __MIN( i_size, p_block->i_buffer - i_offset );
         i_size -= i_copy;
@@ -193,7 +193,7 @@ static inline int block_GetBytes( block_bytestream_t *p_bytestream,
     size_t i_copy = 0;
     block_t *p_block;
     for( p_block = p_bytestream->p_block;
-         p_block != NULL; p_block = p_block->p_next )
+            p_block != NULL; p_block = p_block->p_next )
     {
         i_copy = __MIN( i_size, p_block->i_buffer - i_offset );
         i_size -= i_copy;
@@ -229,7 +229,7 @@ static inline int block_SkipByte( block_bytestream_t *p_bytestream )
 }
 
 static inline int block_PeekOffsetBytes( block_bytestream_t *p_bytestream,
-    size_t i_peek_offset, uint8_t *p_data, size_t i_data )
+        size_t i_peek_offset, uint8_t *p_data, size_t i_data )
 {
     const size_t i_remain = block_BytestreamRemaining( p_bytestream );
     if( i_remain < i_data + i_peek_offset )
@@ -241,7 +241,7 @@ static inline int block_PeekOffsetBytes( block_bytestream_t *p_bytestream,
     size_t i_copy = 0;
     block_t *p_block;
     for( p_block = p_bytestream->p_block;
-         p_block != NULL; p_block = p_block->p_next )
+            p_block != NULL; p_block = p_block->p_next )
     {
         i_copy = __MIN( i_size, p_block->i_buffer - i_offset );
         i_size -= i_copy;
@@ -290,7 +290,7 @@ static inline int block_FindStartcodeFromOffset(
     /* Find the right place */
     i_size = *pi_offset + p_bytestream->i_block_offset;
     for( p_block = p_bytestream->p_block;
-         p_block != NULL; p_block = p_block->p_next )
+            p_block != NULL; p_block = p_block->p_next )
     {
         i_size -= p_block->i_buffer;
         if( i_size < 0 ) break;
@@ -314,10 +314,10 @@ static inline int block_FindStartcodeFromOffset(
         {
             /* Use optimized helper when possible */
             if( p_startcode_helper && !i_match &&
-               (p_block->i_buffer - i_offset) > ((size_t)i_startcode_length - 1) )
+                    (p_block->i_buffer - i_offset) > ((size_t)i_startcode_length - 1) )
             {
                 const uint8_t *p_res = p_startcode_helper( &p_block->p_buffer[i_offset],
-                                                           &p_block->p_buffer[p_block->i_buffer] );
+                                       &p_block->p_buffer[p_block->i_buffer] );
                 if( p_res )
                 {
                     *pi_offset += i_offset + (p_res - &p_block->p_buffer[i_offset]);
@@ -328,8 +328,8 @@ static inline int block_FindStartcodeFromOffset(
             }
 
             bool b_matched = ( p_startcode_matcher )
-                           ? p_startcode_matcher( p_block->p_buffer[i_offset], i_match, p_startcode )
-                           : p_block->p_buffer[i_offset] == p_startcode[i_match];
+                             ? p_startcode_matcher( p_block->p_buffer[i_offset], i_match, p_startcode )
+                             : p_block->p_buffer[i_offset] == p_startcode[i_match];
             if( b_matched )
             {
                 if( i_match == 0 )

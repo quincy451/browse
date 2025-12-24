@@ -273,14 +273,14 @@ static inline void *vlc_array_item_at_index( vlc_array_t *ar, size_t idx )
 }
 
 static inline const void *vlc_array_item_at_index( const vlc_array_t *ar,
-                                                   size_t idx )
+        size_t idx )
 {
     return ar->pp_elems[idx];
 }
 #endif
 
 static inline ssize_t vlc_array_index_of_item( const vlc_array_t *ar,
-                                               const void *elem )
+        const void *elem )
 {
     for( size_t i = 0; i < ar->i_count; i++ )
     {
@@ -408,8 +408,8 @@ static inline void vlc_dictionary_init( vlc_dictionary_t * p_dict, int i_size )
 }
 
 static inline void vlc_dictionary_clear( vlc_dictionary_t * p_dict,
-                                         void ( * pf_free )( void * p_data, void * p_obj ),
-                                         void * p_obj )
+        void ( * pf_free )( void * p_data, void * p_obj ),
+        void * p_obj )
 {
     if( p_dict->p_entries )
     {
@@ -462,11 +462,13 @@ vlc_dictionary_value_for_key( const vlc_dictionary_t * p_dict, const char * psz_
         return kVLCDictionaryNotFound;
 
     /* Make sure we return the right item. (Hash collision) */
-    do {
+    do
+    {
         if( !strcmp( psz_key, p_entry->psz_key ) )
             return p_entry->p_value;
         p_entry = p_entry->p_next;
-    } while( p_entry );
+    }
+    while( p_entry );
 
     return kVLCDictionaryNotFound;
 }
@@ -552,8 +554,8 @@ vlc_dictionary_insert_impl_( vlc_dictionary_t * p_dict, const char * psz_key,
                 while( p_entry )
                 {
                     vlc_dictionary_insert_impl_( &new_dict, p_entry->psz_key,
-                                             p_entry->p_value,
-                                             false /* To avoid multiple rebuild loop */);
+                                                 p_entry->p_value,
+                                                 false /* To avoid multiple rebuild loop */);
                     p_entry = p_entry->p_next;
                 }
             }
@@ -588,7 +590,8 @@ vlc_dictionary_remove_value_for_key( const vlc_dictionary_t * p_dict, const char
 
     /* Hash collision */
     p_prev = NULL;
-    do {
+    do
+    {
         if( !strcmp( psz_key, p_entry->psz_key ) )
         {
             if( pf_free != NULL )
@@ -603,7 +606,8 @@ vlc_dictionary_remove_value_for_key( const vlc_dictionary_t * p_dict, const char
         }
         p_prev = p_entry;
         p_entry = p_entry->p_next;
-    } while( p_entry );
+    }
+    while( p_entry );
 
     /* No key was found */
 }

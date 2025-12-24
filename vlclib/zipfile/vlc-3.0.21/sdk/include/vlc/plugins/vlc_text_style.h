@@ -128,7 +128,8 @@ typedef struct text_segment_t text_segment_t;
  * Create with text_segment_New and clean the chain with
  * text_segment_ChainDelete
  */
-struct text_segment_t {
+struct text_segment_t
+{
     char *psz_text;                   /**< text string of the segment */
     text_style_t *style;              /**< style applied to this segment */
     text_segment_t *p_next;           /**< next segment */
@@ -210,10 +211,12 @@ VLC_API void text_segment_ChainDelete( text_segment_t * );
  */
 VLC_API text_segment_t * text_segment_Copy( text_segment_t * );
 
-static const struct {
+static const struct
+{
     const char *psz_name;
     uint32_t   i_value;
-} p_html_colors[] = {
+} p_html_colors[] =
+{
     /* Official html colors */
     { "Aqua",    0x00FFFF },
     { "Black",   0x000000 },

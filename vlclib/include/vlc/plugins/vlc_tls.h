@@ -96,10 +96,10 @@ VLC_API vlc_tls_creds_t *vlc_tls_ClientCreate(vlc_object_t *);
  * @return TLS credentials object, or NULL on error.
  */
 VLC_API vlc_tls_creds_t *vlc_tls_ServerCreate(vlc_object_t *, const char *cert,
-                                              const char *key);
+        const char *key);
 
 static inline int vlc_tls_SessionHandshake (vlc_tls_creds_t *crd,
-                                            vlc_tls_t *tls)
+        vlc_tls_t *tls)
 {
     return crd->handshake(crd, tls, NULL, NULL, NULL);
 }
@@ -139,11 +139,11 @@ VLC_API void vlc_tls_Delete(vlc_tls_creds_t *);
  * @return TLS session, or NULL on error.
  **/
 VLC_API vlc_tls_t *vlc_tls_ClientSessionCreate(vlc_tls_creds_t *creds,
-                                               vlc_tls_t *sock,
-                                               const char *host,
-                                               const char *service,
-                                               const char *const *alpn,
-                                               char **alp);
+        vlc_tls_t *sock,
+        const char *host,
+        const char *service,
+        const char *const *alpn,
+        char **alp);
 
 /**
  * Creates a TLS server session.
@@ -165,8 +165,8 @@ VLC_API vlc_tls_t *vlc_tls_ClientSessionCreate(vlc_tls_creds_t *creds,
  * @return TLS session, or NULL on error.
  */
 VLC_API vlc_tls_t *vlc_tls_ServerSessionCreate(vlc_tls_creds_t *creds,
-                                               vlc_tls_t *sock,
-                                               const char *const *alpn);
+        vlc_tls_t *sock,
+        const char *const *alpn);
 
 /** @} */
 
@@ -302,7 +302,7 @@ struct addrinfo;
  * @param defer_connect whether to attempt a TCP Fast Open connection or not
  */
 VLC_API vlc_tls_t *vlc_tls_SocketOpenAddrInfo(const struct addrinfo *ai,
-                                              bool defer_connect);
+        bool defer_connect);
 
 /**
  * Creates a transport-layer TCP stream from a name and port.
@@ -316,7 +316,7 @@ VLC_API vlc_tls_t *vlc_tls_SocketOpenAddrInfo(const struct addrinfo *ai,
  * @return a transport layer socket on success or NULL on error
  */
 VLC_API vlc_tls_t *vlc_tls_SocketOpenTCP(vlc_object_t *obj,
-                                         const char *hostname, unsigned port);
+        const char *hostname, unsigned port);
 
 /**
  * Initiates a TLS session over TCP.
@@ -328,9 +328,9 @@ VLC_API vlc_tls_t *vlc_tls_SocketOpenTCP(vlc_object_t *obj,
  * See also vlc_tls_SocketOpenTCP() and vlc_tls_SessionCreate().
  */
 VLC_API vlc_tls_t *vlc_tls_SocketOpenTLS(vlc_tls_creds_t *crd,
-                                         const char *hostname, unsigned port,
-                                         const char *service,
-                                         const char *const *alpn, char **alp);
+        const char *hostname, unsigned port,
+        const char *service,
+        const char *const *alpn, char **alp);
 
 VLC_DEPRECATED
 static inline vlc_tls_t *

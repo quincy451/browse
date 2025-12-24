@@ -41,7 +41,8 @@
 /**
  * Viewpoints
  */
-struct vlc_viewpoint_t {
+struct vlc_viewpoint_t
+{
     float yaw;   /* yaw in degrees */
     float pitch; /* pitch in degrees */
     float roll;  /* roll in degrees */

@@ -142,7 +142,7 @@ VLC_API char ** vlc_sd_GetNames( vlc_object_t *, char ***, int ** ) VLC_USED;
  * Creates a services discoverer.
  */
 VLC_API services_discovery_t *vlc_sd_Create(vlc_object_t *parent,
-    const char *chain, const struct services_discovery_owner_t *owner)
+        const char *chain, const struct services_discovery_owner_t *owner)
 VLC_USED;
 
 VLC_API void vlc_sd_Destroy( services_discovery_t * );
@@ -155,7 +155,7 @@ VLC_API void vlc_sd_Destroy( services_discovery_t * );
  * i.e. it has no parent node.
  */
 static inline void services_discovery_AddItem(services_discovery_t *sd,
-                                              input_item_t *item)
+        input_item_t *item)
 {
     sd->owner.item_added(sd, NULL, item, NULL);
 }
@@ -178,8 +178,8 @@ static inline void services_discovery_AddItem(services_discovery_t *sd,
  * @param item input item to add
  */
 static inline void services_discovery_AddSubItem(services_discovery_t *sd,
-                                                 input_item_t *parent,
-                                                 input_item_t *item)
+        input_item_t *parent,
+        input_item_t *item)
 {
     sd->owner.item_added(sd, parent, item, NULL);
 }
@@ -192,8 +192,8 @@ static inline void services_discovery_AddSubItem(services_discovery_t *sd,
  */
 VLC_DEPRECATED
 static inline void services_discovery_AddItemCat(services_discovery_t *sd,
-                                                 input_item_t *item,
-                                                 const char *category)
+        input_item_t *item,
+        const char *category)
 {
     sd->owner.item_added(sd, NULL, item, category);
 }
@@ -205,7 +205,7 @@ static inline void services_discovery_AddItemCat(services_discovery_t *sd,
  * service is no longer available.
  */
 static inline void services_discovery_RemoveItem(services_discovery_t *sd,
-                                                 input_item_t *item)
+        input_item_t *item)
 {
     sd->owner.item_removed(sd, item);
 }

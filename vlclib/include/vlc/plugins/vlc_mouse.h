@@ -63,17 +63,17 @@ static inline void vlc_mouse_Init( vlc_mouse_t *p_mouse )
 
 /* */
 static inline void vlc_mouse_SetPressed( vlc_mouse_t *p_mouse,
-                                         int i_button )
+        int i_button )
 {
     p_mouse->i_pressed |= 1 << i_button;
 }
 static inline void vlc_mouse_SetReleased( vlc_mouse_t *p_mouse,
-                                          int i_button )
+        int i_button )
 {
     p_mouse->i_pressed &= ~(1 << i_button);
 }
 static inline void vlc_mouse_SetPosition( vlc_mouse_t *p_mouse,
-                                          int i_x, int i_y )
+        int i_x, int i_y )
 {
     p_mouse->i_x = i_x;
     p_mouse->i_y = i_y;
@@ -115,7 +115,7 @@ static inline void vlc_mouse_GetMotion( int *pi_x, int *pi_y,
 
 /* */
 static inline bool vlc_mouse_HasChanged( const vlc_mouse_t *p_old,
-                                         const vlc_mouse_t *p_new )
+        const vlc_mouse_t *p_new )
 {
     return p_old->i_x != p_new->i_x || p_old->i_y != p_new->i_y ||
            p_old->i_pressed != p_new->i_pressed;
@@ -131,15 +131,15 @@ static inline bool vlc_mouse_HasButton( const vlc_mouse_t *p_old,
     return p_old->i_pressed != p_new->i_pressed;
 }
 static inline bool vlc_mouse_HasPressed( const vlc_mouse_t *p_old,
-                                         const vlc_mouse_t *p_new,
-                                         int i_button )
+        const vlc_mouse_t *p_new,
+        int i_button )
 {
     const int i_mask = 1 << i_button;
     return (p_old->i_pressed & i_mask) == 0 && (p_new->i_pressed & i_mask);
 }
 static inline bool vlc_mouse_HasReleased( const vlc_mouse_t *p_old,
-                                          const vlc_mouse_t *p_new,
-                                          int i_button )
+        const vlc_mouse_t *p_new,
+        int i_button )
 {
     const int i_mask = 1 << i_button;
     return (p_old->i_pressed & i_mask) && (p_new->i_pressed & i_mask) == 0;

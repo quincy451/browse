@@ -357,14 +357,16 @@ struct video_format_t
 
     video_projection_mode_t projection_mode;            /**< projection mode */
     vlc_viewpoint_t pose;
-    struct {
+    struct
+    {
         /* similar to SMPTE ST 2086 mastering display color volume */
         uint16_t primaries[3*2]; /* G,B,R / x,y */
         uint16_t white_point[2]; /* x,y */
         uint32_t max_luminance;
         uint32_t min_luminance;
     } mastering;
-    struct {
+    struct
+    {
         /* similar to CTA-861.3 content light level */
         uint16_t MaxCLL;  /* max content light level */
         uint16_t MaxFALL; /* max frame average light level */
@@ -446,8 +448,8 @@ static inline void video_format_Clean( video_format_t *p_src )
  * Note that the video_format_t must already be initialized.
  */
 VLC_API void video_format_Setup( video_format_t *, vlc_fourcc_t i_chroma,
-    int i_width, int i_height, int i_visible_width, int i_visible_height,
-    int i_sar_num, int i_sar_den );
+                                 int i_width, int i_height, int i_visible_width, int i_visible_height,
+                                 int i_sar_num, int i_sar_den );
 
 /**
  * It will copy the crop properties from a video_format_t to another.
@@ -496,13 +498,14 @@ VLC_API void video_format_Print( vlc_object_t *, const char *, const video_forma
 
 static inline video_transform_t transform_Inverse( video_transform_t transform )
 {
-    switch ( transform ) {
-        case TRANSFORM_R90:
-            return TRANSFORM_R270;
-        case TRANSFORM_R270:
-            return TRANSFORM_R90;
-        default:
-            return transform;
+    switch ( transform )
+    {
+    case TRANSFORM_R90:
+        return TRANSFORM_R270;
+    case TRANSFORM_R270:
+        return TRANSFORM_R90;
+    default:
+        return transform;
     }
 }
 /**
@@ -555,8 +558,8 @@ struct subs_format_t
  */
 typedef struct extra_languages_t
 {
-        char *psz_language;
-        char *psz_description;
+    char *psz_language;
+    char *psz_description;
 } extra_languages_t;
 
 /** ES Categories */
@@ -601,8 +604,10 @@ struct es_format_t
     unsigned        i_extra_languages;    /**< length in bytes of extra language data pointer */
     extra_languages_t *p_extra_languages; /**< extra language data needed by some decoders */
 
-    union {
-        struct {
+    union
+    {
+        struct
+        {
             audio_format_t  audio;    /**< description of audio format */
             audio_replay_gain_t audio_replay_gain; /*< audio replay gain information */
         };

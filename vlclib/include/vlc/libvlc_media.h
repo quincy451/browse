@@ -48,7 +48,8 @@ typedef SSIZE_T ssize_t;
 typedef struct libvlc_media_t libvlc_media_t;
 
 /** Meta data types */
-typedef enum libvlc_meta_t {
+typedef enum libvlc_meta_t
+{
     libvlc_meta_Title,
     libvlc_meta_Artist,
     libvlc_meta_Genre,
@@ -156,13 +157,16 @@ typedef struct libvlc_media_track_info_t
     int         i_profile;
     int         i_level;
 
-    union {
-        struct {
+    union
+    {
+        struct
+        {
             /* Audio specific */
             unsigned    i_channels;
             unsigned    i_rate;
         } audio;
-        struct {
+        struct
+        {
             /* Video specific */
             unsigned    i_height;
             unsigned    i_width;
@@ -242,7 +246,8 @@ typedef struct libvlc_media_track_t
     int         i_profile;
     int         i_level;
 
-    union {
+    union
+    {
         libvlc_audio_track_t *audio;
         libvlc_video_track_t *video;
         libvlc_subtitle_track_t *subtitle;
@@ -259,7 +264,8 @@ typedef struct libvlc_media_track_t
  *
  * \see libvlc_media_get_type
  */
-typedef enum libvlc_media_type_t {
+typedef enum libvlc_media_type_t
+{
     libvlc_media_type_unknown,
     libvlc_media_type_file,
     libvlc_media_type_directory,
@@ -408,8 +414,8 @@ typedef void (*libvlc_media_close_cb)(void *opaque);
  * \return the newly created media or NULL on error
  */
 LIBVLC_API libvlc_media_t *libvlc_media_new_location(
-                                   libvlc_instance_t *p_instance,
-                                   const char * psz_mrl );
+    libvlc_instance_t *p_instance,
+    const char * psz_mrl );
 
 /**
  * Create a media for a certain file path.
@@ -421,8 +427,8 @@ LIBVLC_API libvlc_media_t *libvlc_media_new_location(
  * \return the newly created media or NULL on error
  */
 LIBVLC_API libvlc_media_t *libvlc_media_new_path(
-                                   libvlc_instance_t *p_instance,
-                                   const char *path );
+    libvlc_instance_t *p_instance,
+    const char *path );
 
 /**
  * Create a media for an already open file descriptor.
@@ -449,8 +455,8 @@ LIBVLC_API libvlc_media_t *libvlc_media_new_path(
  * \return the newly created media or NULL on error
  */
 LIBVLC_API libvlc_media_t *libvlc_media_new_fd(
-                                   libvlc_instance_t *p_instance,
-                                   int fd );
+    libvlc_instance_t *p_instance,
+    int fd );
 
 /**
  * Create a media with custom callbacks to read the data from.
@@ -479,12 +485,12 @@ LIBVLC_API libvlc_media_t *libvlc_media_new_fd(
  * \version LibVLC 3.0.0 and later.
  */
 LIBVLC_API libvlc_media_t *libvlc_media_new_callbacks(
-                                   libvlc_instance_t *instance,
-                                   libvlc_media_open_cb open_cb,
-                                   libvlc_media_read_cb read_cb,
-                                   libvlc_media_seek_cb seek_cb,
-                                   libvlc_media_close_cb close_cb,
-                                   void *opaque );
+    libvlc_instance_t *instance,
+    libvlc_media_open_cb open_cb,
+    libvlc_media_read_cb read_cb,
+    libvlc_media_seek_cb seek_cb,
+    libvlc_media_close_cb close_cb,
+    void *opaque );
 
 /**
  * Create a media as an empty node with a given name.
@@ -496,8 +502,8 @@ LIBVLC_API libvlc_media_t *libvlc_media_new_callbacks(
  * \return the new empty media or NULL on error
  */
 LIBVLC_API libvlc_media_t *libvlc_media_new_as_node(
-                                   libvlc_instance_t *p_instance,
-                                   const char * psz_name );
+    libvlc_instance_t *p_instance,
+    const char * psz_name );
 
 /**
  * Add an option to the media.
@@ -518,8 +524,8 @@ LIBVLC_API libvlc_media_t *libvlc_media_new_as_node(
  * \param psz_options the options (as a string)
  */
 LIBVLC_API void libvlc_media_add_option(
-                                   libvlc_media_t *p_md,
-                                   const char * psz_options );
+    libvlc_media_t *p_md,
+    const char * psz_options );
 
 /**
  * Add an option to the media with configurable flags.
@@ -539,9 +545,9 @@ LIBVLC_API void libvlc_media_add_option(
  * \param i_flags the flags for this option
  */
 LIBVLC_API void libvlc_media_add_option_flag(
-                                   libvlc_media_t *p_md,
-                                   const char * psz_options,
-                                   unsigned i_flags );
+    libvlc_media_t *p_md,
+    const char * psz_options,
+    unsigned i_flags );
 
 
 /**
@@ -594,7 +600,7 @@ LIBVLC_API libvlc_media_t *libvlc_media_duplicate( libvlc_media_t *p_md );
  * \return the media's meta
  */
 LIBVLC_API char *libvlc_media_get_meta( libvlc_media_t *p_md,
-                                             libvlc_meta_t e_meta );
+                                        libvlc_meta_t e_meta );
 
 /**
  * Set the meta of the media (this function will not save the meta, call
@@ -605,8 +611,8 @@ LIBVLC_API char *libvlc_media_get_meta( libvlc_media_t *p_md,
  * \param psz_value the media's meta
  */
 LIBVLC_API void libvlc_media_set_meta( libvlc_media_t *p_md,
-                                           libvlc_meta_t e_meta,
-                                           const char *psz_value );
+                                       libvlc_meta_t e_meta,
+                                       const char *psz_value );
 
 
 /**
@@ -628,7 +634,7 @@ LIBVLC_API int libvlc_media_save_meta( libvlc_media_t *p_md );
  * \return state of media descriptor object
  */
 LIBVLC_API libvlc_state_t libvlc_media_get_state(
-                                   libvlc_media_t *p_md );
+    libvlc_media_t *p_md );
 
 
 /**
@@ -641,7 +647,7 @@ LIBVLC_API libvlc_state_t libvlc_media_get_state(
  * \libvlc_return_bool
  */
 LIBVLC_API int libvlc_media_get_stats( libvlc_media_t *p_md,
-                                           libvlc_media_stats_t *p_stats );
+                                       libvlc_media_stats_t *p_stats );
 
 /* The following method uses libvlc_media_list_t, however, media_list usage is optionnal
  * and this is here for convenience */
@@ -666,7 +672,7 @@ libvlc_media_subitems( libvlc_media_t *p_md );
  * \return event manager object
  */
 LIBVLC_API libvlc_event_manager_t *
-    libvlc_media_event_manager( libvlc_media_t *p_md );
+libvlc_media_event_manager( libvlc_media_t *p_md );
 
 /**
  * Get duration (in ms) of media descriptor object item.
@@ -675,7 +681,7 @@ LIBVLC_API libvlc_event_manager_t *
  * \return duration of media item or -1 on error
  */
 LIBVLC_API libvlc_time_t
-   libvlc_media_get_duration( libvlc_media_t *p_md );
+libvlc_media_get_duration( libvlc_media_t *p_md );
 
 /**
  * Parse the media asynchronously with options.
@@ -737,7 +743,7 @@ libvlc_media_parse_stop( libvlc_media_t *p_md );
  * \version LibVLC 3.0.0 or later
  */
 LIBVLC_API libvlc_media_parsed_status_t
-   libvlc_media_get_parsed_status( libvlc_media_t *p_md );
+libvlc_media_get_parsed_status( libvlc_media_t *p_md );
 
 /**
  * Sets media descriptor's user_data. user_data is specialized data
@@ -748,7 +754,7 @@ LIBVLC_API libvlc_media_parsed_status_t
  * \param p_new_user_data pointer to user data
  */
 LIBVLC_API void
-    libvlc_media_set_user_data( libvlc_media_t *p_md, void *p_new_user_data );
+libvlc_media_set_user_data( libvlc_media_t *p_md, void *p_new_user_data );
 
 /**
  * Get media descriptor's user_data. user_data is specialized data
@@ -793,7 +799,7 @@ unsigned libvlc_media_tracks_get( libvlc_media_t *p_md,
  */
 LIBVLC_API
 const char *libvlc_media_get_codec_description( libvlc_track_type_t i_type,
-                                                uint32_t i_codec );
+        uint32_t i_codec );
 
 /**
  * Release media descriptor's elementary streams description array

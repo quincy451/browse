@@ -104,7 +104,7 @@ int libvlc_video_get_width( libvlc_media_player_t *p_mi );
  * It must be freed with libvlc_track_description_list_release()
  */
 LIBVLC_DEPRECATED LIBVLC_API libvlc_track_description_t *
-        libvlc_video_get_title_description( libvlc_media_player_t *p_mi );
+libvlc_video_get_title_description( libvlc_media_player_t *p_mi );
 
 /**
  * Get the description of available chapters for specific title.
@@ -115,7 +115,7 @@ LIBVLC_DEPRECATED LIBVLC_API libvlc_track_description_t *
  * It must be freed with libvlc_track_description_list_release()
  */
 LIBVLC_DEPRECATED LIBVLC_API libvlc_track_description_t *
-        libvlc_video_get_chapter_description( libvlc_media_player_t *p_mi, int i_title );
+libvlc_video_get_chapter_description( libvlc_media_player_t *p_mi, int i_title );
 
 /**
  * Set new video subtitle file.
@@ -159,7 +159,7 @@ int libvlc_audio_output_device_count( libvlc_instance_t *p_instance, const char 
  */
 LIBVLC_DEPRECATED LIBVLC_API
 char *libvlc_audio_output_device_longname( libvlc_instance_t *p_instance, const char *psz_output,
-                                           int i_device );
+        int i_device );
 
 /**
  * Backward compatibility stub. Do not use in new code.
@@ -181,7 +181,7 @@ LIBVLC_API int libvlc_audio_output_get_device_type( libvlc_media_player_t *p_mi 
  */
 LIBVLC_DEPRECATED
 LIBVLC_API void libvlc_audio_output_set_device_type( libvlc_media_player_t *p_mp,
-                                                     int device_type );
+        int device_type );
 
 /** @}*/
 
@@ -246,7 +246,7 @@ libvlc_media_parse_async( libvlc_media_t *p_md );
  * \libvlc_return_bool
  */
 LIBVLC_DEPRECATED LIBVLC_API int
-   libvlc_media_is_parsed( libvlc_media_t *p_md );
+libvlc_media_is_parsed( libvlc_media_t *p_md );
 
 /**
  * Get media descriptor's elementary streams description
@@ -275,8 +275,8 @@ int libvlc_media_get_tracks_info( libvlc_media_t *p_md,
  */
 
 LIBVLC_DEPRECATED int
-    libvlc_media_list_add_file_content( libvlc_media_list_t * p_ml,
-                                        const char * psz_uri );
+libvlc_media_list_add_file_content( libvlc_media_list_t * p_ml,
+                                    const char * psz_uri );
 
 /** @}*/
 
@@ -450,7 +450,7 @@ int libvlc_log_iterator_has_next( const libvlc_log_iterator_t *p_iter );
  */
 LIBVLC_DEPRECATED LIBVLC_API
 libvlc_log_message_t *libvlc_log_iterator_next( libvlc_log_iterator_t *p_iter,
-                                                libvlc_log_message_t *p_buf );
+        libvlc_log_message_t *p_buf );
 
 /** @}*/
 

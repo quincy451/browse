@@ -92,7 +92,7 @@ struct filter_t
 
         /** Blend a subpicture onto a picture (blend) */
         void (*pf_video_blend)( filter_t *,  picture_t *, const picture_t *,
-                                 int, int, int );
+                                int, int, int );
 
         /** Generate a subpicture (sub source) */
         subpicture_t *(*pf_sub_source)( filter_t *, vlc_tick_t );
@@ -180,7 +180,7 @@ static inline void filter_Flush( filter_t *p_filter )
 }
 
 static inline void filter_ChangeViewpoint( filter_t *p_filter,
-                                           const vlc_viewpoint_t *vp)
+        const vlc_viewpoint_t *vp)
 {
     if( p_filter->pf_change_viewpoint != NULL )
         p_filter->pf_change_viewpoint( p_filter, vp );
@@ -220,8 +220,8 @@ static inline subpicture_t *filter_NewSubpicture( filter_t *p_filter )
  * You MUST release the returned values
  */
 static inline int filter_GetInputAttachments( filter_t *p_filter,
-                                              input_attachment_t ***ppp_attachment,
-                                              int *pi_attachment )
+        input_attachment_t ***ppp_attachment,
+        int *pi_attachment )
 {
     if( !p_filter->pf_get_attachments )
         return VLC_EGENERIC;
@@ -326,7 +326,7 @@ VLC_USED;
  * \return new filter chain, or NULL on error
  */
 VLC_API filter_chain_t * filter_chain_NewVideo( vlc_object_t *obj, bool change,
-                                                const filter_owner_t *owner )
+        const filter_owner_t *owner )
 VLC_USED;
 #define filter_chain_NewVideo( a, b, c ) \
         filter_chain_NewVideo( VLC_OBJECT( a ), b, c )
@@ -359,8 +359,8 @@ VLC_API void filter_chain_Reset( filter_chain_t *, const es_format_t *, const es
  * \return a pointer to the filter or NULL on error
  */
 VLC_API filter_t *filter_chain_AppendFilter(filter_chain_t *chain,
-    const char *name, config_chain_t *cfg, const es_format_t *fmt_in,
-    const es_format_t *fmt_out);
+        const char *name, config_chain_t *cfg, const es_format_t *fmt_in,
+        const es_format_t *fmt_out);
 
 /**
  * Append a conversion to the chain.
@@ -372,7 +372,7 @@ VLC_API filter_t *filter_chain_AppendFilter(filter_chain_t *chain,
  * \retval -1 on failure
  */
 VLC_API int filter_chain_AppendConverter(filter_chain_t *chain,
-    const es_format_t *fmt_in, const es_format_t *fmt_out);
+        const es_format_t *fmt_in, const es_format_t *fmt_out);
 
 /**
  * Append new filter to filter chain from string.
@@ -381,7 +381,7 @@ VLC_API int filter_chain_AppendConverter(filter_chain_t *chain,
  * \param str filters chain nul-terminated string
  */
 VLC_API int filter_chain_AppendFromString(filter_chain_t *chain,
-                                          const char *str);
+        const char *str);
 
 /**
  * Delete filter from filter chain. This function also releases the filter
@@ -417,7 +417,7 @@ VLC_API const es_format_t *filter_chain_GetFmtOut(filter_chain_t *chain);
  * \return modified picture after applying all video filters
  */
 VLC_API picture_t *filter_chain_VideoFilter(filter_chain_t *chain,
-                                            picture_t *pic);
+        picture_t *pic);
 
 /**
  * Flush a video filter chain.
@@ -441,7 +441,7 @@ void filter_chain_SubSource(filter_chain_t *chain, spu_t *,
  * \return modified subpicture after applying all subpicture filters
  */
 VLC_API subpicture_t *filter_chain_SubFilter(filter_chain_t *chain,
-                                             subpicture_t *subpic);
+        subpicture_t *subpic);
 
 /**
  * Apply the filter chain to a mouse state.

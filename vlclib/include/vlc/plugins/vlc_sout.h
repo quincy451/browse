@@ -190,7 +190,8 @@ static inline int sout_MuxControl( sout_mux_t *p_mux, int i_query, ... )
 
 /** @} */
 
-enum sout_stream_query_e {
+enum sout_stream_query_e
+{
     SOUT_STREAM_EMPTY,    /* arg1=bool *,       res=can fail (assume true) */
 };
 
@@ -222,7 +223,7 @@ VLC_API sout_stream_t *sout_StreamChainNew(sout_instance_t *p_sout,
         const char *psz_chain, sout_stream_t *p_next, sout_stream_t **p_last) VLC_USED;
 
 static inline sout_stream_id_sys_t *sout_StreamIdAdd( sout_stream_t *s,
-                                                      const es_format_t *fmt )
+        const es_format_t *fmt )
 {
     return s->pf_add( s, fmt );
 }

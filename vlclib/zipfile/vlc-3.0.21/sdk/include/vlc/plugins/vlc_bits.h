@@ -41,7 +41,7 @@ typedef struct bs_s
     ssize_t  i_left;    /* i_count number of available bits */
     bool     b_read_only;
 
-     /* forward read modifier (p_start, p_end, p_fwpriv, count) */
+    /* forward read modifier (p_start, p_end, p_fwpriv, count) */
     uint8_t *(*pf_forward)(uint8_t *, uint8_t *, void *, size_t);
     void    *p_fwpriv;
 } bs_t;
@@ -73,7 +73,7 @@ static inline int bs_remain( const bs_t *s )
     if( s->p >= s->p_end )
         return 0;
     else
-    return( 8 * ( s->p_end - s->p ) - 8 + s->i_left );
+        return( 8 * ( s->p_end - s->p ) - 8 + s->i_left );
 }
 
 static inline int bs_eof( const bs_t *s )
@@ -86,8 +86,9 @@ static inline int bs_eof( const bs_t *s )
 
 static inline uint32_t bs_read( bs_t *s, int i_count )
 {
-     static const uint32_t i_mask[33] =
-     {  0x00,
+    static const uint32_t i_mask[33] =
+    {
+        0x00,
         0x01,      0x03,      0x07,      0x0f,
         0x1f,      0x3f,      0x7f,      0xff,
         0x1ff,     0x3ff,     0x7ff,     0xfff,
@@ -95,7 +96,8 @@ static inline uint32_t bs_read( bs_t *s, int i_count )
         0x1ffff,   0x3ffff,   0x7ffff,   0xfffff,
         0x1fffff,  0x3fffff,  0x7fffff,  0xffffff,
         0x1ffffff, 0x3ffffff, 0x7ffffff, 0xfffffff,
-        0x1fffffff,0x3fffffff,0x7fffffff,0xffffffff};
+        0x1fffffff,0x3fffffff,0x7fffffff,0xffffffff
+    };
     int      i_shr, i_drop = 0;
     uint32_t i_result = 0;
 
@@ -127,13 +129,13 @@ static inline uint32_t bs_read( bs_t *s, int i_count )
         else
         {
             /* less in the buffer than requested */
-           if( -i_shr == 32 )
-               i_result = 0;
-           else
-               i_result |= (*s->p&i_mask[s->i_left]) << -i_shr;
-           i_count  -= s->i_left;
-           bs_forward( s, 1);
-           s->i_left = 8;
+            if( -i_shr == 32 )
+                i_result = 0;
+            else
+                i_result |= (*s->p&i_mask[s->i_left]) << -i_shr;
+            i_count  -= s->i_left;
+            bs_forward( s, 1);
+            s->i_left = 8;
         }
     }
 
@@ -261,7 +263,7 @@ static inline int_fast32_t bs_read_se( bs_t *s )
     uint_fast32_t val = bs_read_ue( s );
 
     return (val & 0x01) ? (int_fast32_t)((val + 1) / 2)
-                        : -(int_fast32_t)(val / 2);
+           : -(int_fast32_t)(val / 2);
 }
 
 #undef bs_forward

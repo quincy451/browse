@@ -44,7 +44,8 @@ typedef struct libvlc_renderer_item_t libvlc_renderer_item_t;
 /**
  * Event types
  */
-enum libvlc_event_e {
+enum libvlc_event_e
+{
     /* Append new event types at the end of a category.
      * Do not remove, insert or re-order any entry.
      * Keep this in sync with lib/event.c:libvlc_event_type_name(). */
@@ -237,7 +238,7 @@ typedef struct libvlc_event_t
         /* snapshot taken */
         struct
         {
-             char* psz_filename ;
+            char* psz_filename ;
         } media_player_snapshot_taken ;
 
         /* Length changed */

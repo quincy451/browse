@@ -57,10 +57,10 @@ LIBVLC_API void libvlc_vlm_release( libvlc_instance_t *p_instance );
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_add_broadcast( libvlc_instance_t *p_instance,
-                                             const char *psz_name, const char *psz_input,
-                                             const char *psz_output, int i_options,
-                                             const char * const* ppsz_options,
-                                             int b_enabled, int b_loop );
+        const char *psz_name, const char *psz_input,
+        const char *psz_output, int i_options,
+        const char * const* ppsz_options,
+        int b_enabled, int b_loop );
 
 /**
  * Add a vod, with one input.
@@ -75,9 +75,9 @@ LIBVLC_API int libvlc_vlm_add_broadcast( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_add_vod( libvlc_instance_t * p_instance,
-                                       const char *psz_name, const char *psz_input,
-                                       int i_options, const char * const* ppsz_options,
-                                       int b_enabled, const char *psz_mux );
+                                   const char *psz_name, const char *psz_input,
+                                   int i_options, const char * const* ppsz_options,
+                                   int b_enabled, const char *psz_mux );
 
 /**
  * Delete a media (VOD or broadcast).
@@ -87,7 +87,7 @@ LIBVLC_API int libvlc_vlm_add_vod( libvlc_instance_t * p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_del_media( libvlc_instance_t * p_instance,
-                                         const char *psz_name );
+                                     const char *psz_name );
 
 /**
  * Enable or disable a media (VOD or broadcast).
@@ -98,7 +98,7 @@ LIBVLC_API int libvlc_vlm_del_media( libvlc_instance_t * p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_set_enabled( libvlc_instance_t *p_instance,
-                                           const char *psz_name, int b_enabled );
+                                       const char *psz_name, int b_enabled );
 
 /**
  * Set the output for a media.
@@ -109,8 +109,8 @@ LIBVLC_API int libvlc_vlm_set_enabled( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_set_output( libvlc_instance_t *p_instance,
-                                          const char *psz_name,
-                                          const char *psz_output );
+                                      const char *psz_name,
+                                      const char *psz_output );
 
 /**
  * Set a media's input MRL. This will delete all existing inputs and
@@ -122,8 +122,8 @@ LIBVLC_API int libvlc_vlm_set_output( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_set_input( libvlc_instance_t *p_instance,
-                                         const char *psz_name,
-                                         const char *psz_input );
+                                     const char *psz_name,
+                                     const char *psz_input );
 
 /**
  * Add a media's input MRL. This will add the specified one.
@@ -134,8 +134,8 @@ LIBVLC_API int libvlc_vlm_set_input( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_add_input( libvlc_instance_t *p_instance,
-                                         const char *psz_name,
-                                         const char *psz_input );
+                                     const char *psz_name,
+                                     const char *psz_input );
 
 /**
  * Set a media's loop status.
@@ -146,8 +146,8 @@ LIBVLC_API int libvlc_vlm_add_input( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_set_loop( libvlc_instance_t *p_instance,
-                                        const char *psz_name,
-                                        int b_loop );
+                                    const char *psz_name,
+                                    int b_loop );
 
 /**
  * Set a media's vod muxer.
@@ -158,8 +158,8 @@ LIBVLC_API int libvlc_vlm_set_loop( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_set_mux( libvlc_instance_t *p_instance,
-                                       const char *psz_name,
-                                       const char *psz_mux );
+                                   const char *psz_name,
+                                   const char *psz_mux );
 
 /**
  * Edit the parameters of a media. This will delete all existing inputs and
@@ -176,10 +176,10 @@ LIBVLC_API int libvlc_vlm_set_mux( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_change_media( libvlc_instance_t *p_instance,
-                                            const char *psz_name, const char *psz_input,
-                                            const char *psz_output, int i_options,
-                                            const char * const *ppsz_options,
-                                            int b_enabled, int b_loop );
+                                        const char *psz_name, const char *psz_input,
+                                        const char *psz_output, int i_options,
+                                        const char * const *ppsz_options,
+                                        int b_enabled, int b_loop );
 
 /**
  * Play the named broadcast.
@@ -189,7 +189,7 @@ LIBVLC_API int libvlc_vlm_change_media( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_play_media ( libvlc_instance_t *p_instance,
-                                           const char *psz_name );
+                                       const char *psz_name );
 
 /**
  * Stop the named broadcast.
@@ -199,7 +199,7 @@ LIBVLC_API int libvlc_vlm_play_media ( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_stop_media ( libvlc_instance_t *p_instance,
-                                           const char *psz_name );
+                                       const char *psz_name );
 
 /**
  * Pause the named broadcast.
@@ -209,7 +209,7 @@ LIBVLC_API int libvlc_vlm_stop_media ( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_pause_media( libvlc_instance_t *p_instance,
-                                           const char *psz_name );
+                                       const char *psz_name );
 
 /**
  * Seek in the named broadcast.
@@ -220,8 +220,8 @@ LIBVLC_API int libvlc_vlm_pause_media( libvlc_instance_t *p_instance,
  * \return 0 on success, -1 on error
  */
 LIBVLC_API int libvlc_vlm_seek_media( libvlc_instance_t *p_instance,
-                                          const char *psz_name,
-                                          float f_percentage );
+                                      const char *psz_name,
+                                      float f_percentage );
 
 /**
  * Return information about the named media as a JSON
@@ -240,7 +240,7 @@ LIBVLC_API int libvlc_vlm_seek_media( libvlc_instance_t *p_instance,
  * \return string with information about named media, or NULL on error
  */
 LIBVLC_API const char* libvlc_vlm_show_media( libvlc_instance_t *p_instance,
-                                                  const char *psz_name );
+        const char *psz_name );
 
 /**
  * Get vlm_media instance position by name or instance id
@@ -251,8 +251,8 @@ LIBVLC_API const char* libvlc_vlm_show_media( libvlc_instance_t *p_instance,
  * \return position as float or -1. on error
  */
 LIBVLC_API float libvlc_vlm_get_media_instance_position( libvlc_instance_t *p_instance,
-                                                             const char *psz_name,
-                                                             int i_instance );
+        const char *psz_name,
+        int i_instance );
 
 /**
  * Get vlm_media instance time by name or instance id
@@ -263,8 +263,8 @@ LIBVLC_API float libvlc_vlm_get_media_instance_position( libvlc_instance_t *p_in
  * \return time as integer or -1 on error
  */
 LIBVLC_API int libvlc_vlm_get_media_instance_time( libvlc_instance_t *p_instance,
-                                                       const char *psz_name,
-                                                       int i_instance );
+        const char *psz_name,
+        int i_instance );
 
 /**
  * Get vlm_media instance length by name or instance id
@@ -275,8 +275,8 @@ LIBVLC_API int libvlc_vlm_get_media_instance_time( libvlc_instance_t *p_instance
  * \return length of media item or -1 on error
  */
 LIBVLC_API int libvlc_vlm_get_media_instance_length( libvlc_instance_t *p_instance,
-                                                         const char *psz_name,
-                                                         int i_instance );
+        const char *psz_name,
+        int i_instance );
 
 /**
  * Get vlm_media instance playback rate by name or instance id
@@ -287,8 +287,8 @@ LIBVLC_API int libvlc_vlm_get_media_instance_length( libvlc_instance_t *p_instan
  * \return playback rate or -1 on error
  */
 LIBVLC_API int libvlc_vlm_get_media_instance_rate( libvlc_instance_t *p_instance,
-                                                       const char *psz_name,
-                                                       int i_instance );
+        const char *psz_name,
+        int i_instance );
 #if 0
 /**
  * Get vlm_media instance title number by name or instance id
@@ -299,7 +299,7 @@ LIBVLC_API int libvlc_vlm_get_media_instance_rate( libvlc_instance_t *p_instance
  * \return title as number or -1 on error
  */
 LIBVLC_API int libvlc_vlm_get_media_instance_title( libvlc_instance_t *p_instance,
-                                                        const char *psz_name, int i_instance );
+        const char *psz_name, int i_instance );
 
 /**
  * Get vlm_media instance chapter number by name or instance id
@@ -310,7 +310,7 @@ LIBVLC_API int libvlc_vlm_get_media_instance_title( libvlc_instance_t *p_instanc
  * \return chapter as number or -1 on error
  */
 LIBVLC_API int libvlc_vlm_get_media_instance_chapter( libvlc_instance_t *p_instance,
-                                                          const char *psz_name, int i_instance );
+        const char *psz_name, int i_instance );
 
 /**
  * Is libvlc instance seekable ?
@@ -321,7 +321,7 @@ LIBVLC_API int libvlc_vlm_get_media_instance_chapter( libvlc_instance_t *p_insta
  * \return 1 if seekable, 0 if not, -1 if media does not exist
  */
 LIBVLC_API int libvlc_vlm_get_media_instance_seekable( libvlc_instance_t *p_instance,
-                                                           const char *psz_name, int i_instance );
+        const char *psz_name, int i_instance );
 #endif
 /**
  * Get libvlc_event_manager from a vlm media.
@@ -331,7 +331,7 @@ LIBVLC_API int libvlc_vlm_get_media_instance_seekable( libvlc_instance_t *p_inst
  * \return libvlc_event_manager
  */
 LIBVLC_API libvlc_event_manager_t *
-    libvlc_vlm_get_event_manager( libvlc_instance_t *p_instance );
+libvlc_vlm_get_event_manager( libvlc_instance_t *p_instance );
 
 /** @} */
 

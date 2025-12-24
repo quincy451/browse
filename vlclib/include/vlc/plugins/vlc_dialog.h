@@ -107,7 +107,7 @@ vlc_dialog_wait_login(vlc_object_t *p_obj, char **ppsz_username,
                       char **ppsz_password, bool *p_store,
                       const char *psz_default_username,
                       const char *psz_title, const char *psz_fmt, ...)
-                      VLC_FORMAT(7,8);
+VLC_FORMAT(7,8);
 #define vlc_dialog_wait_login(a, b, c, d, e, f, g, ...) \
     vlc_dialog_wait_login(VLC_OBJECT(a), b, c, d, e, f, g, ##__VA_ARGS__)
 
@@ -181,7 +181,7 @@ VLC_API vlc_dialog_id *
 vlc_dialog_display_progress(vlc_object_t *p_obj, bool b_indeterminate,
                             float f_position, const char *psz_cancel,
                             const char *psz_title, const char *psz_fmt, ...)
-                            VLC_FORMAT(6,7);
+VLC_FORMAT(6,7);
 #define vlc_dialog_display_progress(a, b, c, d, e, f, ...) \
     vlc_dialog_display_progress(VLC_OBJECT(a), b, c, d, e, f, ##__VA_ARGS__)
 
@@ -223,7 +223,7 @@ vlc_dialog_update_progress(vlc_object_t *p_obj, vlc_dialog_id *p_id,
 VLC_API int
 vlc_dialog_update_progress_text(vlc_object_t *p_obj, vlc_dialog_id *p_id,
                                 float f_position, const char *psz_fmt, ...)
-                                VLC_FORMAT(4, 5);
+VLC_FORMAT(4, 5);
 #define vlc_dialog_update_progress_text(a, b, c, d, ...) \
     vlc_dialog_update_progress_text(VLC_OBJECT(a), b, c, d, ##__VA_ARGS__)
 
@@ -462,7 +462,7 @@ vlc_ext_dialog_update(vlc_object_t *p_obj, extension_dialog_t *dialog);
  * Dialog extension callback to be implemented
  */
 typedef void (*vlc_dialog_ext_update_cb)(extension_dialog_t *p_ext_dialog,
-                                         void *p_data);
+        void *p_data);
 
 /**
  * Register a callback for VLC extension dialog

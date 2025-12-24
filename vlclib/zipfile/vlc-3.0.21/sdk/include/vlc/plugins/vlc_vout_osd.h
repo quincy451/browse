@@ -83,7 +83,7 @@ VLC_API void vout_OSDMessage( vout_thread_t *, int, const char *, ... ) VLC_FORM
  * \param i_postion Current position in the slider
  * \param i_type    Types are: OSD_HOR_SLIDER and OSD_VERT_SLIDER.
  */
-VLC_API void vout_OSDSlider( vout_thread_t *, int, int , short );
+VLC_API void vout_OSDSlider( vout_thread_t *, int, int, short );
 
 /**
  * Display an Icon on the video output.

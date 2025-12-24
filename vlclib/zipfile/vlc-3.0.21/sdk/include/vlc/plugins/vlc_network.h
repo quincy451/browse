@@ -229,23 +229,23 @@ net_SockAddrIsMulticast (const struct sockaddr *addr, socklen_t len)
     switch (addr->sa_family)
     {
 #ifdef IN_MULTICAST
-        case AF_INET:
-        {
-            const struct sockaddr_in *v4 = (const struct sockaddr_in *)addr;
-            if ((size_t)len < sizeof (*v4))
-                return false;
-            return IN_MULTICAST (ntohl (v4->sin_addr.s_addr)) != 0;
-        }
+    case AF_INET:
+    {
+        const struct sockaddr_in *v4 = (const struct sockaddr_in *)addr;
+        if ((size_t)len < sizeof (*v4))
+            return false;
+        return IN_MULTICAST (ntohl (v4->sin_addr.s_addr)) != 0;
+    }
 #endif
 
 #ifdef IN6_IS_ADDR_MULTICAST
-        case AF_INET6:
-        {
-            const struct sockaddr_in6 *v6 = (const struct sockaddr_in6 *)addr;
-            if ((size_t)len < sizeof (*v6))
-                return false;
-            return IN6_IS_ADDR_MULTICAST (&v6->sin6_addr) != 0;
-        }
+    case AF_INET6:
+    {
+        const struct sockaddr_in6 *v6 = (const struct sockaddr_in6 *)addr;
+        if ((size_t)len < sizeof (*v6))
+            return false;
+        return IN6_IS_ADDR_MULTICAST (&v6->sin6_addr) != 0;
+    }
 #endif
     }
 
@@ -259,9 +259,9 @@ static inline int net_GetSockAddress( int fd, char *address, int *port )
     socklen_t addrlen = sizeof( addr );
 
     return getsockname( fd, (struct sockaddr *)&addr, &addrlen )
-        || vlc_getnameinfo( (struct sockaddr *)&addr, addrlen, address,
-                            NI_MAXNUMERICHOST, port, NI_NUMERICHOST )
-        ? VLC_EGENERIC : 0;
+           || vlc_getnameinfo( (struct sockaddr *)&addr, addrlen, address,
+                               NI_MAXNUMERICHOST, port, NI_NUMERICHOST )
+           ? VLC_EGENERIC : 0;
 }
 
 static inline int net_GetPeerAddress( int fd, char *address, int *port )
@@ -270,9 +270,9 @@ static inline int net_GetPeerAddress( int fd, char *address, int *port )
     socklen_t addrlen = sizeof( addr );
 
     return getpeername( fd, (struct sockaddr *)&addr, &addrlen )
-        || vlc_getnameinfo( (struct sockaddr *)&addr, addrlen, address,
-                            NI_MAXNUMERICHOST, port, NI_NUMERICHOST )
-        ? VLC_EGENERIC : 0;
+           || vlc_getnameinfo( (struct sockaddr *)&addr, addrlen, address,
+                               NI_MAXNUMERICHOST, port, NI_NUMERICHOST )
+           ? VLC_EGENERIC : 0;
 }
 
 static inline uint16_t net_GetPort (const struct sockaddr *addr)
@@ -280,11 +280,11 @@ static inline uint16_t net_GetPort (const struct sockaddr *addr)
     switch (addr->sa_family)
     {
 #ifdef AF_INET6
-        case AF_INET6:
-            return ((const struct sockaddr_in6 *)addr)->sin6_port;
+    case AF_INET6:
+        return ((const struct sockaddr_in6 *)addr)->sin6_port;
 #endif
-        case AF_INET:
-            return ((const struct sockaddr_in *)addr)->sin_port;
+    case AF_INET:
+        return ((const struct sockaddr_in *)addr)->sin_port;
     }
     return 0;
 }
@@ -294,12 +294,12 @@ static inline void net_SetPort (struct sockaddr *addr, uint16_t port)
     switch (addr->sa_family)
     {
 #ifdef AF_INET6
-        case AF_INET6:
-            ((struct sockaddr_in6 *)addr)->sin6_port = port;
+    case AF_INET6:
+        ((struct sockaddr_in6 *)addr)->sin6_port = port;
         break;
 #endif
-        case AF_INET:
-            ((struct sockaddr_in *)addr)->sin_port = port;
+    case AF_INET:
+        ((struct sockaddr_in *)addr)->sin_port = port;
         break;
     }
 }

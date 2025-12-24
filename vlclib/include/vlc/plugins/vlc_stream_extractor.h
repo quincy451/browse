@@ -47,7 +47,8 @@ extern "C" {
  *
  **/
 
-typedef struct stream_extractor_t {
+typedef struct stream_extractor_t
+{
     VLC_COMMON_MEMBERS
 
     /**
@@ -70,7 +71,8 @@ typedef struct stream_extractor_t {
 
 } stream_extractor_t;
 
-typedef struct stream_directory_t {
+typedef struct stream_directory_t
+{
     VLC_COMMON_MEMBERS
 
     /**
@@ -127,7 +129,7 @@ VLC_USED;
  * \return a pointer to the resulting MRL on success, NULL on failure
  **/
 VLC_API char* vlc_stream_extractor_CreateMRL( stream_directory_t*,
-                                              char const* subentry );
+        char const* subentry );
 
 /**
  * \name Attach a stream-extractor to the passed stream
@@ -151,11 +153,11 @@ VLC_API char* vlc_stream_extractor_CreateMRL( stream_directory_t*,
  **/
 
 VLC_API int vlc_stream_extractor_Attach( stream_t** source,
-                                         char const* identifier,
-                                         char const* module_name );
+        char const* identifier,
+        char const* module_name );
 
 VLC_API int vlc_stream_directory_Attach( stream_t** source,
-                                         char const* module_name );
+        char const* module_name );
 /**
  * @}
  */

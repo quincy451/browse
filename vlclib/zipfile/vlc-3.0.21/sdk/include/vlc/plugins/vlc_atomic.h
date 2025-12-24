@@ -195,7 +195,11 @@ typedef atomic_uint_least32_t vlc_atomic_float;
 
 static inline void vlc_atomic_init_float(vlc_atomic_float *var, float f)
 {
-    union { float f; uint32_t i; } u;
+    union
+    {
+        float f;
+        uint32_t i;
+    } u;
     u.f = f;
     atomic_init(var, u.i);
 }
@@ -203,7 +207,11 @@ static inline void vlc_atomic_init_float(vlc_atomic_float *var, float f)
 /** Helper to retrieve a single precision from an atom. */
 static inline float vlc_atomic_load_float(vlc_atomic_float *atom)
 {
-    union { float f; uint32_t i; } u;
+    union
+    {
+        float f;
+        uint32_t i;
+    } u;
     u.i = atomic_load(atom);
     return u.f;
 }
@@ -211,7 +219,11 @@ static inline float vlc_atomic_load_float(vlc_atomic_float *atom)
 /** Helper to store a single precision into an atom. */
 static inline void vlc_atomic_store_float(vlc_atomic_float *atom, float f)
 {
-    union { float f; uint32_t i; } u;
+    union
+    {
+        float f;
+        uint32_t i;
+    } u;
     u.f = f;
     atomic_store(atom, u.i);
 }

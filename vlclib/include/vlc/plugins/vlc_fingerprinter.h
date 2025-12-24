@@ -47,7 +47,7 @@ typedef struct fingerprint_request_t fingerprint_request_t;
 static inline fingerprint_request_t *fingerprint_request_New( input_item_t *p_item )
 {
     fingerprint_request_t *p_r =
-            ( fingerprint_request_t * ) calloc( 1, sizeof( fingerprint_request_t ) );
+        ( fingerprint_request_t * ) calloc( 1, sizeof( fingerprint_request_t ) );
     if ( !p_r ) return NULL;
     p_r->results.psz_fingerprint = NULL;
     p_r->i_duration = 0;

@@ -117,7 +117,8 @@ libvlc_InternalActionsClean(libvlc_int_t *p_libvlc);
 VLC_API char *vlc_keycode2str(uint_fast32_t i_key, bool locale) VLC_USED;
 VLC_API uint_fast32_t vlc_str2keycode(const char *str) VLC_USED;
 
-typedef enum vlc_action_id {
+typedef enum vlc_action_id
+{
     ACTIONID_NONE = 0,
     ACTIONID_QUIT,
     ACTIONID_PLAY_PAUSE,
@@ -147,7 +148,7 @@ typedef enum vlc_action_id {
     ACTIONID_FRAME_NEXT,
     ACTIONID_POSITION,
     ACTIONID_VOL_MUTE,
-/* let ACTIONID_SET_BOOMARK* and ACTIONID_PLAY_BOOKMARK* be contiguous */
+    /* let ACTIONID_SET_BOOMARK* and ACTIONID_PLAY_BOOKMARK* be contiguous */
     ACTIONID_SET_BOOKMARK1,
     ACTIONID_SET_BOOKMARK2,
     ACTIONID_SET_BOOKMARK3,
@@ -261,7 +262,7 @@ vlc_actions_get_id(const char *psz_key_name);
  */
 VLC_API size_t
 vlc_actions_get_keycodes(vlc_object_t *p_obj, const char *psz_key_name,
-                        bool b_global, uint_fast32_t **pp_keycodes );
+                         bool b_global, uint_fast32_t **pp_keycodes );
 #define vlc_actions_get_keycodes(a, b, c, d) vlc_actions_get_keycodes(VLC_OBJECT(a), b, c, d)
 
 /**

@@ -170,13 +170,15 @@ struct audio_output
       * \warning A stream may or may not have been started when called.
       */
 
-    struct {
+    struct
+    {
         bool headphones; /**< Default to false, set it to true if the current
                               sink is using headphones */
     } current_sink_info;
     /**< Current sink informations set by the module from the start() function */
 
-    struct {
+    struct
+    {
         void (*volume_report)(audio_output_t *, float);
         void (*mute_report)(audio_output_t *, bool);
         void (*policy_report)(audio_output_t *, bool);
@@ -242,14 +244,14 @@ static const uint32_t pi_vlc_chan_order_wg4[] =
  * internal (WG4) order is requested.
  */
 VLC_API unsigned aout_CheckChannelReorder( const uint32_t *, const uint32_t *,
-                                           uint32_t mask, uint8_t *table );
+        uint32_t mask, uint8_t *table );
 VLC_API void aout_ChannelReorder(void *, size_t, uint8_t, const uint8_t *, vlc_fourcc_t);
 
 VLC_API void aout_Interleave(void *dst, const void *const *planes,
                              unsigned samples, unsigned channels,
                              vlc_fourcc_t fourcc);
 VLC_API void aout_Deinterleave(void *dst, const void *src, unsigned samples,
-                             unsigned channels, vlc_fourcc_t fourcc);
+                               unsigned channels, vlc_fourcc_t fourcc);
 
 /**
  * This function will compute the extraction parameter into pi_selection to go

@@ -59,7 +59,7 @@ typedef enum libvlc_playback_mode_t
  * \return media list player instance or NULL on error
  */
 LIBVLC_API libvlc_media_list_player_t *
-    libvlc_media_list_player_new( libvlc_instance_t * p_instance );
+libvlc_media_list_player_new( libvlc_instance_t * p_instance );
 
 /**
  * Release a media_list_player after use
@@ -71,7 +71,7 @@ LIBVLC_API libvlc_media_list_player_t *
  * \param p_mlp media list player instance
  */
 LIBVLC_API void
-    libvlc_media_list_player_release( libvlc_media_list_player_t * p_mlp );
+libvlc_media_list_player_release( libvlc_media_list_player_t * p_mlp );
 
 /**
  * Retain a reference to a media player list object. Use
@@ -80,7 +80,7 @@ LIBVLC_API void
  * \param p_mlp media player list object
  */
 LIBVLC_API void
-    libvlc_media_list_player_retain( libvlc_media_list_player_t *p_mlp );
+libvlc_media_list_player_retain( libvlc_media_list_player_t *p_mlp );
 
 /**
  * Return the event manager of this media_list_player.
@@ -89,7 +89,7 @@ LIBVLC_API void
  * \return the event manager
  */
 LIBVLC_API libvlc_event_manager_t *
-    libvlc_media_list_player_event_manager(libvlc_media_list_player_t * p_mlp);
+libvlc_media_list_player_event_manager(libvlc_media_list_player_t * p_mlp);
 
 /**
  * Replace media player in media_list_player with this instance.
@@ -98,9 +98,9 @@ LIBVLC_API libvlc_event_manager_t *
  * \param p_mi media player instance
  */
 LIBVLC_API void
-    libvlc_media_list_player_set_media_player(
-                                     libvlc_media_list_player_t * p_mlp,
-                                     libvlc_media_player_t * p_mi );
+libvlc_media_list_player_set_media_player(
+    libvlc_media_list_player_t * p_mlp,
+    libvlc_media_player_t * p_mi );
 
 /**
  * Get media player of the media_list_player instance.
@@ -110,7 +110,7 @@ LIBVLC_API void
  * \note the caller is responsible for releasing the returned instance
  */
 LIBVLC_API libvlc_media_player_t *
-    libvlc_media_list_player_get_media_player(libvlc_media_list_player_t * p_mlp);
+libvlc_media_list_player_get_media_player(libvlc_media_list_player_t * p_mlp);
 
 /**
  * Set the media list associated with the player
@@ -119,9 +119,9 @@ LIBVLC_API libvlc_media_player_t *
  * \param p_mlist list of media
  */
 LIBVLC_API void
-    libvlc_media_list_player_set_media_list(
-                                     libvlc_media_list_player_t * p_mlp,
-                                     libvlc_media_list_t * p_mlist );
+libvlc_media_list_player_set_media_list(
+    libvlc_media_list_player_t * p_mlp,
+    libvlc_media_list_t * p_mlist );
 
 /**
  * Play media list
@@ -159,7 +159,7 @@ void libvlc_media_list_player_set_pause(libvlc_media_list_player_t * p_mlp,
  * \libvlc_return_bool
  */
 LIBVLC_API int
-    libvlc_media_list_player_is_playing( libvlc_media_list_player_t * p_mlp );
+libvlc_media_list_player_is_playing( libvlc_media_list_player_t * p_mlp );
 
 /**
  * Get current libvlc_state of media list player
@@ -168,7 +168,7 @@ LIBVLC_API int
  * \return libvlc_state_t for media list player
  */
 LIBVLC_API libvlc_state_t
-    libvlc_media_list_player_get_state( libvlc_media_list_player_t * p_mlp );
+libvlc_media_list_player_get_state( libvlc_media_list_player_t * p_mlp );
 
 /**
  * Play media list item at position index
@@ -179,7 +179,7 @@ LIBVLC_API libvlc_state_t
  */
 LIBVLC_API
 int libvlc_media_list_player_play_item_at_index(libvlc_media_list_player_t * p_mlp,
-                                                int i_index);
+        int i_index);
 
 /**
  * Play the given media item
@@ -198,7 +198,7 @@ int libvlc_media_list_player_play_item(libvlc_media_list_player_t * p_mlp,
  * \param p_mlp media list player instance
  */
 LIBVLC_API void
-    libvlc_media_list_player_stop( libvlc_media_list_player_t * p_mlp);
+libvlc_media_list_player_stop( libvlc_media_list_player_t * p_mlp);
 
 /**
  * Play next item from media list
@@ -228,7 +228,7 @@ int libvlc_media_list_player_previous(libvlc_media_list_player_t * p_mlp);
  */
 LIBVLC_API
 void libvlc_media_list_player_set_playback_mode(libvlc_media_list_player_t * p_mlp,
-                                                libvlc_playback_mode_t e_mode );
+        libvlc_playback_mode_t e_mode );
 
 /** @} media_list_player */
 

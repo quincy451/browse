@@ -1031,33 +1031,33 @@ static inline void vlc_cancel_addr_clear(void *addr)
  */
 class vlc_mutex_locker
 {
-    private:
-        vlc_mutex_t *lock;
-    public:
-        vlc_mutex_locker (vlc_mutex_t *m) : lock (m)
-        {
-            vlc_mutex_lock (lock);
-        }
+private:
+    vlc_mutex_t *lock;
+public:
+    vlc_mutex_locker (vlc_mutex_t *m) : lock (m)
+    {
+        vlc_mutex_lock (lock);
+    }
 
-        ~vlc_mutex_locker (void)
-        {
-            vlc_mutex_unlock (lock);
-        }
+    ~vlc_mutex_locker (void)
+    {
+        vlc_mutex_unlock (lock);
+    }
 };
 #endif
 
 enum
 {
-   VLC_AVCODEC_MUTEX = 0,
-   VLC_GCRYPT_MUTEX,
-   VLC_XLIB_MUTEX,
-   VLC_MOSAIC_MUTEX,
-   VLC_HIGHLIGHT_MUTEX,
+    VLC_AVCODEC_MUTEX = 0,
+    VLC_GCRYPT_MUTEX,
+    VLC_XLIB_MUTEX,
+    VLC_MOSAIC_MUTEX,
+    VLC_HIGHLIGHT_MUTEX,
 #ifdef _WIN32
-   VLC_MTA_MUTEX,
+    VLC_MTA_MUTEX,
 #endif
-   /* Insert new entry HERE */
-   VLC_MAX_MUTEX
+    /* Insert new entry HERE */
+    VLC_MAX_MUTEX
 };
 
 /**

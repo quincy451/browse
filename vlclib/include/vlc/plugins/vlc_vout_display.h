@@ -70,7 +70,8 @@ typedef enum
 /**
  * Window management state.
  */
-enum {
+enum
+{
     VOUT_WINDOW_STATE_NORMAL=0,
     VOUT_WINDOW_STATE_ABOVE=1,
     VOUT_WINDOW_STATE_BELOW=2,
@@ -80,13 +81,15 @@ enum {
 /**
  * Initial/Current configuration for a vout_display_t
  */
-typedef struct {
+typedef struct
+{
 #if defined(_WIN32) || defined(__OS2__)
     bool is_fullscreen VLC_DEPRECATED;  /* Is the display fullscreen */
 #endif
 
     /* Display properties */
-    struct {
+    struct
+    {
         /* Window title (may be NULL) */
         const char *title;
 
@@ -99,7 +102,8 @@ typedef struct {
     } display;
 
     /* Alignment of the picture inside the display */
-    struct {
+    struct
+    {
         int horizontal;
         int vertical;
     } align;
@@ -110,7 +114,8 @@ typedef struct {
     /* Zoom to use
      * It will be applied to the whole display if b_display_filled is set, otherwise
      * only on the video source */
-    struct {
+    struct
+    {
         int num;
         int den;
     } zoom;
@@ -125,7 +130,8 @@ typedef struct {
  * By default they are all false or NULL.
  *
  */
-typedef struct {
+typedef struct
+{
     bool is_slow;                           /* The picture memory has slow read/write */
     bool has_double_click;                  /* Is double-click generated */
     bool needs_hide_mouse;                  /* Needs VOUT_DISPLAY_HIDE_MOUSE,
@@ -138,7 +144,8 @@ typedef struct {
 /**
  * Control query for vout_display_t
  */
-enum {
+enum
+{
     /* Hide the mouse. It will be sent when
      * vout_display_t::info.needs_hide_mouse is true */
     VOUT_DISPLAY_HIDE_MOUSE VLC_DEPRECATED_ENUM,
@@ -189,7 +196,8 @@ enum {
  * Events modifiying the state may be sent multiple times.
  * Only the transition will be retained and acted upon.
  */
-enum {
+enum
+{
     /* TODO:
      * ZOOM ? DISPLAY_FILLED ? ON_TOP ?
      */
@@ -226,7 +234,8 @@ enum {
 /**
  * Vout owner structures
  */
-struct vout_display_owner_t {
+struct vout_display_owner_t
+{
     /* Private place holder for the vout_display_t creator
      */
     void *sys;
@@ -253,7 +262,8 @@ struct vout_display_owner_t {
     void           (*window_del)(vout_display_t *, vout_window_t *);
 };
 
-struct vout_display_t {
+struct vout_display_t
+{
     VLC_COMMON_MEMBERS
 
     /* Module */
@@ -371,7 +381,7 @@ static inline void vout_display_SendEventKey(vout_display_t *vd, int key)
 }
 #if defined(_WIN32) || defined(__OS2__)
 static inline void vout_display_SendEventFullscreen(vout_display_t *vd, bool is_fullscreen,
-                                                    bool is_window_fullscreen)
+        bool is_window_fullscreen)
 {
     vout_display_SendEvent(vd, VOUT_DISPLAY_EVENT_FULLSCREEN, is_fullscreen, is_window_fullscreen);
 }
@@ -402,7 +412,7 @@ static inline void vout_display_SendEventMouseDoubleClick(vout_display_t *vd)
     vout_display_SendEvent(vd, VOUT_DISPLAY_EVENT_MOUSE_DOUBLE_CLICK);
 }
 static inline void vout_display_SendEventViewpointMoved(vout_display_t *vd,
-                                                        const vlc_viewpoint_t *vp)
+        const vlc_viewpoint_t *vp)
 {
     vout_display_SendEvent(vd, VOUT_DISPLAY_EVENT_VIEWPOINT_MOVED, vp);
 }
@@ -419,7 +429,7 @@ static inline vout_window_t *vout_display_NewWindow(vout_display_t *vd, unsigned
  * or any unused windows otherwise.
  */
 static inline void vout_display_DeleteWindow(vout_display_t *vd,
-                                             vout_window_t *window)
+        vout_window_t *window)
 {
     vd->owner.window_del(vd, window);
 }
@@ -444,7 +454,8 @@ VLC_API void vout_display_GetDefaultDisplaySize(unsigned *width, unsigned *heigh
 /**
  * Structure used to store the result of a vout_display_PlacePicture.
  */
-typedef struct {
+typedef struct
+{
     int x;
     int y;
     unsigned width;
@@ -475,7 +486,7 @@ VLC_API void vout_display_PlacePicture(vout_display_place_t *place, const video_
  * \param place Place of the picture.
  */
 VLC_API void vout_display_SendMouseMovedDisplayCoordinates(vout_display_t *vd, video_orientation_t orient_display, int m_x, int m_y,
-                                                           vout_display_place_t *place);
+        vout_display_place_t *place);
 
 /** @} */
 #endif /* VLC_VOUT_DISPLAY_H */

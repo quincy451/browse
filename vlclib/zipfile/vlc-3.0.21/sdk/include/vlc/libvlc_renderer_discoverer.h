@@ -244,7 +244,7 @@ libvlc_renderer_discoverer_list_get( libvlc_instance_t *p_inst,
  */
 LIBVLC_API void
 libvlc_renderer_discoverer_list_release( libvlc_rd_description_t **pp_services,
-                                         size_t i_count );
+        size_t i_count );
 
 /** @} */
 

@@ -43,7 +43,7 @@ struct xml_t
 
     void (*pf_catalog_load) ( xml_t *, const char * );
     void (*pf_catalog_add) ( xml_t *, const char *, const char *,
-                            const char * );
+                             const char * );
 };
 
 VLC_API xml_t * xml_Create( vlc_object_t * ) VLC_USED;
@@ -88,14 +88,14 @@ static inline int xml_ReaderNextNode( xml_reader_t *reader, const char **pval )
 }
 
 static inline const char *xml_ReaderNextAttr( xml_reader_t *reader,
-                                              const char **pval )
+        const char **pval )
 {
-  return reader->pf_next_attr( reader, pval );
+    return reader->pf_next_attr( reader, pval );
 }
 
 static inline int xml_ReaderUseDTD( xml_reader_t *reader )
 {
-  return reader->pf_use_dtd( reader );
+    return reader->pf_use_dtd( reader );
 }
 
 static inline int xml_ReaderIsEmptyElement( xml_reader_t *reader )
@@ -106,7 +106,8 @@ static inline int xml_ReaderIsEmptyElement( xml_reader_t *reader )
     return reader->pf_is_empty( reader );
 }
 
-enum {
+enum
+{
     XML_READER_ERROR=-1,
     XML_READER_NONE=0,
     XML_READER_STARTELEM,

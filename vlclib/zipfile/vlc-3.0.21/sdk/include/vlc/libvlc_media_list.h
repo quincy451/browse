@@ -45,7 +45,7 @@ typedef struct libvlc_media_list_t libvlc_media_list_t;
  * \return empty media list, or NULL on error
  */
 LIBVLC_API libvlc_media_list_t *
-    libvlc_media_list_new( libvlc_instance_t *p_instance );
+libvlc_media_list_new( libvlc_instance_t *p_instance );
 
 /**
  * Release media list created with libvlc_media_list_new().
@@ -53,7 +53,7 @@ LIBVLC_API libvlc_media_list_t *
  * \param p_ml a media list created with libvlc_media_list_new()
  */
 LIBVLC_API void
-    libvlc_media_list_release( libvlc_media_list_t *p_ml );
+libvlc_media_list_release( libvlc_media_list_t *p_ml );
 
 /**
  * Retain reference to a media list
@@ -61,7 +61,7 @@ LIBVLC_API void
  * \param p_ml a media list created with libvlc_media_list_new()
  */
 LIBVLC_API void
-    libvlc_media_list_retain( libvlc_media_list_t *p_ml );
+libvlc_media_list_retain( libvlc_media_list_t *p_ml );
 
 /**
  * Associate media instance with this media list instance.
@@ -83,7 +83,7 @@ libvlc_media_list_set_media( libvlc_media_list_t *p_ml, libvlc_media_t *p_md );
  * \return media instance
  */
 LIBVLC_API libvlc_media_t *
-    libvlc_media_list_media( libvlc_media_list_t *p_ml );
+libvlc_media_list_media( libvlc_media_list_t *p_ml );
 
 /**
  * Add media instance to media list
@@ -128,7 +128,7 @@ libvlc_media_list_remove_index( libvlc_media_list_t *p_ml, int i_pos );
  * \return number of items in media list
  */
 LIBVLC_API int
-    libvlc_media_list_count( libvlc_media_list_t *p_ml );
+libvlc_media_list_count( libvlc_media_list_t *p_ml );
 
 /**
  * List media instance in media list at a position
@@ -141,7 +141,7 @@ LIBVLC_API int
  * on the media.
  */
 LIBVLC_API libvlc_media_t *
-    libvlc_media_list_item_at_index( libvlc_media_list_t *p_ml, int i_pos );
+libvlc_media_list_item_at_index( libvlc_media_list_t *p_ml, int i_pos );
 /**
  * Find index position of List media instance in media list.
  * Warning: the function will return the first matched position.
@@ -152,8 +152,8 @@ LIBVLC_API libvlc_media_t *
  * \return position of media instance or -1 if media not found
  */
 LIBVLC_API int
-    libvlc_media_list_index_of_item( libvlc_media_list_t *p_ml,
-                                     libvlc_media_t *p_md );
+libvlc_media_list_index_of_item( libvlc_media_list_t *p_ml,
+                                 libvlc_media_t *p_md );
 
 /**
  * This indicates if this media list is read-only from a user point of view
@@ -164,7 +164,7 @@ LIBVLC_API int
  * \libvlc_return_bool
  */
 LIBVLC_API int
-    libvlc_media_list_is_readonly( libvlc_media_list_t * p_ml );
+libvlc_media_list_is_readonly( libvlc_media_list_t * p_ml );
 
 /**
  * Get lock on media list items
@@ -172,7 +172,7 @@ LIBVLC_API int
  * \param p_ml a media list instance
  */
 LIBVLC_API void
-    libvlc_media_list_lock( libvlc_media_list_t *p_ml );
+libvlc_media_list_lock( libvlc_media_list_t *p_ml );
 
 /**
  * Release lock on media list items
@@ -181,7 +181,7 @@ LIBVLC_API void
  * \param p_ml a media list instance
  */
 LIBVLC_API void
-    libvlc_media_list_unlock( libvlc_media_list_t *p_ml );
+libvlc_media_list_unlock( libvlc_media_list_t *p_ml );
 
 /**
  * Get libvlc_event_manager from this media list instance.
@@ -191,7 +191,7 @@ LIBVLC_API void
  * \return libvlc_event_manager
  */
 LIBVLC_API libvlc_event_manager_t *
-    libvlc_media_list_event_manager( libvlc_media_list_t *p_ml );
+libvlc_media_list_event_manager( libvlc_media_list_t *p_ml );
 
 /** @} media_list */
 

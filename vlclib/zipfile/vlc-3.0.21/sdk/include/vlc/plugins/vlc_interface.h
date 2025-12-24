@@ -111,7 +111,8 @@ VLC_API void vlc_LogSet(libvlc_int_t *, vlc_log_cb cb, void *data);
 /*@}*/
 
 /* Interface dialog ids for dialog providers */
-typedef enum vlc_intf_dialog {
+typedef enum vlc_intf_dialog
+{
     INTF_DIALOG_FILE_SIMPLE = 1,
     INTF_DIALOG_FILE,
     INTF_DIALOG_DISC,
@@ -277,7 +278,7 @@ typedef struct interaction_dialog_t
     int             i_return;           ///< Return status
 
     vlc_object_t   *p_parent;           ///< The vlc object that asked
-                                        //for interaction
+    //for interaction
     intf_thread_t  *p_interface;
     vlc_mutex_t    *p_lock;
 } interaction_dialog_t;

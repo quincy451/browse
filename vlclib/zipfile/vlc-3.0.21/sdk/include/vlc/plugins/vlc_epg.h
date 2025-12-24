@@ -69,7 +69,7 @@ typedef struct
  * \p i_duration event duration in seconds
  */
 VLC_API vlc_epg_event_t * vlc_epg_event_New(uint16_t i_id,
-                                            int64_t i_start, uint32_t i_duration);
+        int64_t i_start, uint32_t i_duration);
 
 /**
  * Releases a vlc_epg_event_t*.

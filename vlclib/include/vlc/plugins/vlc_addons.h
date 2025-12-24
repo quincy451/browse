@@ -157,7 +157,7 @@ VLC_API void addon_entry_Release(addon_entry_t *);
  * addons manager lifecycle
  */
 VLC_API addons_manager_t *addons_manager_New( vlc_object_t *,
-    const struct addons_manager_owner * );
+        const struct addons_manager_owner * );
 VLC_API void addons_manager_Delete( addons_manager_t * );
 
 /**
@@ -202,7 +202,7 @@ static inline bool addons_uuid_read( const char *psz_uuid, addon_uuid_t *p_uuid 
 
 static inline char * addons_uuid_to_psz( const addon_uuid_t * p_uuid )
 {
-    char *psz = (char*) calloc( ADDON_UUID_PSZ_SIZE + 1 , sizeof(char) );
+    char *psz = (char*) calloc( ADDON_UUID_PSZ_SIZE + 1, sizeof(char) );
     if ( psz )
     {
         int i=0;
